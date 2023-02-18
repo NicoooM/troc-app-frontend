@@ -1,0 +1,12 @@
+.m-input {
+    padding: 12px 16px;
+    background-color: var(--grey200);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    color: var(--black);
+    display: block;
+    &::placeholder {
+        color: var(--grey600);
+    }
+}
