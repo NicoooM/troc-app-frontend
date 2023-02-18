@@ -5,8 +5,10 @@ export default function CreateArticleLayout({
 }) {
   return (
     <>
-      <h1>Layout</h1>
-      {children}
+      <div className="container">
+        <h1>Layout</h1>
+        {children}
+      </div>
     </>
   );
 }
