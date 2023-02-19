@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Article } from "@/src/types/article";
+import { CreateArticle } from "@/src/types/article";
 import { Category } from "@/src/types/category";
 import { getAllCategories } from "@/src/services/category.service";
 import { createItem } from "@/src/services/item.service";
 
-export default function CreateArticle() {
-  const [article, setArticle] = useState<Article>({
+export default function CreateArticlePage() {
+  const [article, setArticle] = useState<CreateArticle>({
     title: "",
     description: "",
     category: 0,
