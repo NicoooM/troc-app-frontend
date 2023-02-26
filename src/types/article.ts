@@ -1,3 +1,5 @@
+import { Category } from "./category";
+
 export type CreateArticle = {
   title: string;
   description: string;
@@ -11,8 +13,8 @@ export type Article = {
   createdAt: string;
   description: string;
   isAvailable: boolean;
-  category: any;
-  againstCategory: any;
+  category: Category;
+  againstCategory: Category;
   user: any;
   slug: string;
 };

@@ -2,6 +2,7 @@ import { register } from "@/src/services/auth.service";
 import { useState } from "react";
 import { RegisterUser } from "@/src/types/user";
 import { useRouter } from "next/navigation";
+import Layout from "@/src/app/components/layout/Layout";
 
 export default function InscriptionPage() {
   const router = useRouter();
@@ -35,69 +36,71 @@ export default function InscriptionPage() {
   };
 
   return (
-    <main>
-      <h1>Inscription</h1>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="" className="m-label">
-            Nom utilisateur
-          </label>
-          <input
-            type="text"
-            placeholder="Nom utilisateur"
-            onChange={handleChange}
-            name="username"
-            value={user.username}
-            className="m-input"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="" className="m-label">
-            Adresse mail
-          </label>
-          <input
-            type="email"
-            placeholder="Adresse mail"
-            onChange={handleChange}
-            name="email"
-            value={user.email}
-            className="m-input"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="" className="m-label">
-            Mot de passe
-          </label>
-          <input
-            type="password"
-            placeholder="Mot de passe"
-            onChange={handleChange}
-            name="password"
-            value={user.password}
-            className="m-input"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="" className="m-label">
-            Confirmer le mot de passe
-          </label>
-          <input
-            type="password"
-            placeholder="Confirmer le mot de passe"
-            onChange={handlePasswordConfirmChange}
-            name="passwordConfirm"
-            value={passwordConfirm}
-            className="m-input"
-            required
-          />
-        </div>
-        <button className="m-button m-button--green" type="submit">
-          S'inscrire
-        </button>
-      </form>
-    </main>
+    <Layout>
+      <main>
+        <h1>Inscription</h1>
+        <form onSubmit={onSubmit}>
+          <div>
+            <label htmlFor="" className="m-label">
+              Nom utilisateur
+            </label>
+            <input
+              type="text"
+              placeholder="Nom utilisateur"
+              onChange={handleChange}
+              name="username"
+              value={user.username}
+              className="m-input"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="" className="m-label">
+              Adresse mail
+            </label>
+            <input
+              type="email"
+              placeholder="Adresse mail"
+              onChange={handleChange}
+              name="email"
+              value={user.email}
+              className="m-input"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="" className="m-label">
+              Mot de passe
+            </label>
+            <input
+              type="password"
+              placeholder="Mot de passe"
+              onChange={handleChange}
+              name="password"
+              value={user.password}
+              className="m-input"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="" className="m-label">
+              Confirmer le mot de passe
+            </label>
+            <input
+              type="password"
+              placeholder="Confirmer le mot de passe"
+              onChange={handlePasswordConfirmChange}
+              name="passwordConfirm"
+              value={passwordConfirm}
+              className="m-input"
+              required
+            />
+          </div>
+          <button className="m-button m-button--green" type="submit">
+            S'inscrire
+          </button>
+        </form>
+      </main>
+    </Layout>
   );
 }

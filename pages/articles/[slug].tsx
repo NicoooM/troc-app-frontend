@@ -1,7 +1,12 @@
 import Layout from "@/src/app/components/layout/Layout";
 import { getItem } from "@/src/services/item.service";
+import { Article } from "@/src/types/article";
 
-const SingleArticle = ({ article }: any) => {
+type Props = {
+  article: Article;
+};
+
+const SingleArticle = ({ article }: Props) => {
   return (
     <Layout>
       <h1>{article.title}</h1>
@@ -14,7 +19,7 @@ export default SingleArticle;
 
 export async function getServerSideProps(context: any) {
   const { slug } = context.params;
-  const article = await getItem(slug);
+  const article: Article = await getItem(slug);
   return {
     props: {
       article,
