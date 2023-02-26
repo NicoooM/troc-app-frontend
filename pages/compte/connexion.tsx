@@ -1,10 +1,11 @@
-"use client";
-
 import { login } from "@/src/services/auth.service";
 import { useState } from "react";
-import { LoginUser } from "@/src/types/auth";
+import { LoginUser } from "@/src/types/user";
+import { setTokenCookie } from "@/src/utils/authorizations";
+import { useRouter } from "next/navigation";
 
 export default function ConnexionPage() {
+  const router = useRouter();
   const [user, setUser] = useState<LoginUser>({
     email: "",
     password: "",
@@ -17,6 +18,8 @@ export default function ConnexionPage() {
     event.preventDefault();
     try {
       const { token } = await login(user);
+      setTokenCookie(token);
+      router.push("/");
     } catch (error) {
       console.error(error);
     }

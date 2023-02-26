@@ -1,4 +1,12 @@
-import { parseCookies, destroyCookie } from "nookies";
+import { parseCookies, destroyCookie, setCookie } from "nookies";
+
+export const setTokenCookie = (token: string) => {
+  const cookiesOptions = {
+    maxAge: 7 * 24 * 60 * 60,
+    path: "/",
+  };
+  setCookie(null, "token", token, cookiesOptions);
+};
 
 export const getTokenFromCookie = () => {
   const { token } = parseCookies();

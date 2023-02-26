@@ -1,10 +1,10 @@
-"use client";
-
 import { register } from "@/src/services/auth.service";
 import { useState } from "react";
-import { RegisterUser } from "@/src/types/auth";
+import { RegisterUser } from "@/src/types/user";
+import { useRouter } from "next/navigation";
 
 export default function InscriptionPage() {
+  const router = useRouter();
   const [user, setUser] = useState<RegisterUser>({
     email: "",
     username: "",
@@ -28,7 +28,7 @@ export default function InscriptionPage() {
     event.preventDefault();
     try {
       const res = await register(user);
-      console.log(res);
+      router.push("/connexion");
     } catch (error) {
       console.error(error);
     }

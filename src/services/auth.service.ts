@@ -1,4 +1,4 @@
-import { LoginUser, RegisterUser } from "../types/auth";
+import { LoginUser, RegisterUser } from "../types/user";
 import { postRequestWithoutToken } from "../utils/useApi";
 
 export const login = async (data: LoginUser) => {

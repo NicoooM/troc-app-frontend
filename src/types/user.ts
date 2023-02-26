@@ -13,12 +13,9 @@ export type LoginUser = {
 
 export type User = {
   id: number;
-  title: string;
+  username: string;
   createdAt: string;
-  description: string;
-  isAvailable: boolean;
-  category: any;
-  againstCategory: any;
-  user: any;
-  slug: string;
+  email: string;
+  city: string;
+  postalCode: number;
 };
