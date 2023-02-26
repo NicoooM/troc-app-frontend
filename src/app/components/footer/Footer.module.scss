@@ -1,0 +1,22 @@
+.wrapper {
+    background-color: var(--grey200);
+    padding: 30px 0;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23px;
+    color: var(--black);
+    margin-bottom: 12px;
+}
+
+.link {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--black);
+    &:not(:last-child) {
+        margin-bottom: 12px;
+    }
+}
