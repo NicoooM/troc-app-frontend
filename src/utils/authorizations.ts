@@ -6,6 +6,7 @@ export const setTokenCookie = (token: string) => {
     path: "/",
   };
   setCookie(null, "token", token, cookiesOptions);
+  console.log("token set");
 };
 
 export const getTokenFromCookie = () => {

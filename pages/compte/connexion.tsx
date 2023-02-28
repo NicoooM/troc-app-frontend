@@ -18,8 +18,8 @@ export default function ConnexionPage() {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const { token } = await login(user);
-      setTokenCookie(token);
+      const { access_token } = await login(user);
+      setTokenCookie(access_token);
       router.push("/");
     } catch (error) {
       console.error(error);
