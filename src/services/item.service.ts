@@ -1,4 +1,4 @@
-import { Article, CreateArticle } from "../types/article";
+import { AllArticles, Article, CreateArticle } from "../types/article";
 import { getRequest, postRequest } from "../utils/useApi";
 
 export const createItem = async (data: CreateArticle) => {
@@ -6,8 +6,8 @@ export const createItem = async (data: CreateArticle) => {
   return response.data;
 };
 
-export const getAllItems = async (): Promise<Article[]> => {
-  const response = await getRequest("/items");
+export const getAllItems = async (queries?: any): Promise<AllArticles> => {
+  const response = await getRequest("/items", queries);
   return response.data;
 };
 

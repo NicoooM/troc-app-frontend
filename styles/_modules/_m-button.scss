@@ -4,6 +4,7 @@
     line-height: 20px;
     display: flex;
     position: relative;
+    width: 100%;
     &--green {
         font-weight: 600;
         background-color: var(--green);
@@ -13,6 +14,15 @@
         font-weight: 500;
         background-color: var(--grey200);
         color: var(--black);
+    }
+    &--border {
+        font-weight: 500;
+        color: var(--black);
+        border: 1px solid var(--green);
+    }
+    &--secondary {
+        font-weight: 500;
+        color: var(--green);
     }
     &--center {
         justify-content: center;
@@ -26,5 +36,8 @@
             width: 20px;
             height: 20px;
         }
+    }
+    &--fit-content {
+        width: fit-content;
     }
 }

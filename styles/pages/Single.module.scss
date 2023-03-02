@@ -41,6 +41,41 @@
     font-size: 12px;
     line-height: 15px;
     color: var(--grey700);
+    margin-bottom: 24px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.userIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--grey300);
+    margin-right: 12px;
+    svg {
+        width: 25px;
+        height: 25px;
+        color: var(--grey500);
+    }
+}
+
+.username {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    margin-bottom: 4px;
+}
+
+.seeUser {
+    font-size: 12px;
+    line-height: 15px;
 }
 
 .subtitle {

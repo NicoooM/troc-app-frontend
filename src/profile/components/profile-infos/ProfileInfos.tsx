@@ -5,9 +5,10 @@ import styles from "./ProfileInfos.module.scss";
 
 type Props = {
   user: UserType;
+  itemsCount: number;
 };
 
-const ProfileInfos = ({ user }: Props) => {
+const ProfileInfos = ({ user, itemsCount }: Props) => {
   const renderProfilePicture = useMemo(() => {
     return <User weight="fill" />;
   }, []);
@@ -27,7 +28,9 @@ const ProfileInfos = ({ user }: Props) => {
       <div className={styles.profilePicture}>{renderProfilePicture}</div>
       <div className={styles.content}>
         <h1 className={styles.username}>{user.username}</h1>
-        <p className={styles.articles}>32 articles en attentes d’échange</p>
+        <p className={styles.articles}>
+          {itemsCount} articles en attentes d’échange
+        </p>
         <p className={styles.date}>A rejoint le {date}</p>
       </div>
     </div>

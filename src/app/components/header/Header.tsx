@@ -27,14 +27,17 @@ const Header = () => {
       return (
         <Link
           href={"/articles/creer-un-article"}
-          className="m-button m-button--green"
+          className="m-button m-button--green m-button--fit-content"
         >
           Echanger mon objet
         </Link>
       );
     } else {
       return (
-        <Link href={"/compte/connexion"} className="m-button m-button--green">
+        <Link
+          href={"/compte/connexion"}
+          className="m-button m-button--green m-button--fit-content"
+        >
           Echanger mon objet
         </Link>
       );
@@ -80,7 +83,7 @@ const Header = () => {
 
   return (
     <ProfilLayout>
-      <nav className={styles.wrapper}>
+      <header className={styles.wrapper}>
         <div className="container">
           <div className={styles.nav}>
             <Link href={"/"} title="Revenir à l'accueil">
@@ -95,7 +98,7 @@ const Header = () => {
             {renderAccountButton}
           </div>
         </div>
-      </nav>
+      </header>
     </ProfilLayout>
   );
 };

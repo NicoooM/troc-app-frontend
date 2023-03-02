@@ -1,7 +1,7 @@
 .m-select {
     position: relative;
     select {
-        padding: 12px 16px;
+        padding: 12px 42px 12px 16px;
         background-color: var(--grey200);
         font-size: 15px;
         font-weight: 400;
@@ -9,9 +9,6 @@
         color: var(--black);
         width: 100%;
         display: block;
-        option:first-of-type {
-            display: none;
-        }
         option {
             color: var(--black);
         }

@@ -12,7 +12,7 @@
 .head {
     display: flex;
     align-items: flex-start;
-    margin: 0 -12px;
+    margin: 0 -12px 60px -12px;
 }
 
 .profileInfos,
@@ -30,4 +30,20 @@
 
 .profileSettingItem:not(:last-child) {
     margin-bottom: 16px;
+}
+
+.articlesHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.articlesTitle {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.search {
+    width: 370px;
 }

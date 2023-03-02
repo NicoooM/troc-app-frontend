@@ -4,6 +4,7 @@
     }
     &__content {
         position: absolute;
+        z-index: 2;
         top: calc(100% + 10px);
         right: 0;
         width: 200px;

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { RegisterUser } from "@/src/types/user";
 import { useRouter } from "next/navigation";
 import Layout from "@/src/app/components/layout/Layout";
-import styles from "@/src/app/pages/Account.module.scss";
+import styles from "@/styles/pages/Account.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -56,59 +56,66 @@ export default function InscriptionPage() {
                 <label htmlFor="" className="m-label">
                   Nom utilisateur
                 </label>
-                <input
-                  type="text"
-                  placeholder="Nom utilisateur"
-                  onChange={handleChange}
-                  name="username"
-                  value={user.username}
-                  className="m-input"
-                  required
-                />
+                <div className="m-input">
+                  <input
+                    type="text"
+                    placeholder="Nom utilisateur"
+                    onChange={handleChange}
+                    name="username"
+                    value={user.username}
+                    required
+                  />
+                </div>
               </div>
               <div className={styles.formInput}>
                 <label htmlFor="" className="m-label">
                   Adresse mail
                 </label>
-                <input
-                  type="email"
-                  placeholder="Adresse mail"
-                  onChange={handleChange}
-                  name="email"
-                  value={user.email}
-                  className="m-input"
-                  required
-                />
+                <div className="m-input">
+                  <input
+                    type="email"
+                    placeholder="Adresse mail"
+                    onChange={handleChange}
+                    name="email"
+                    value={user.email}
+                    required
+                  />
+                </div>
               </div>
               <div className={styles.formInput}>
                 <label htmlFor="" className="m-label">
                   Mot de passe
                 </label>
-                <input
-                  type="password"
-                  placeholder="Mot de passe"
-                  onChange={handleChange}
-                  name="password"
-                  value={user.password}
-                  className="m-input"
-                  required
-                />
+                <div className="m-input">
+                  <input
+                    type="password"
+                    placeholder="Mot de passe"
+                    onChange={handleChange}
+                    name="password"
+                    value={user.password}
+                    required
+                  />
+                </div>
               </div>
               <div className={styles.formInput}>
                 <label htmlFor="" className="m-label">
                   Confirmer le mot de passe
                 </label>
-                <input
-                  type="password"
-                  placeholder="Confirmer le mot de passe"
-                  onChange={handlePasswordConfirmChange}
-                  name="passwordConfirm"
-                  value={passwordConfirm}
-                  className="m-input"
-                  required
-                />
+                <div className="m-input">
+                  <input
+                    type="password"
+                    placeholder="Confirmer le mot de passe"
+                    onChange={handlePasswordConfirmChange}
+                    name="passwordConfirm"
+                    value={passwordConfirm}
+                    required
+                  />
+                </div>
               </div>
-              <button className="m-button m-button--green" type="submit">
+              <button
+                className="m-button m-button--green m-button--fit-content"
+                type="submit"
+              >
                 Continuer
               </button>
             </form>

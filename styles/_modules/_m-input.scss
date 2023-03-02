@@ -1,13 +1,28 @@
 .m-input {
-    padding: 12px 16px;
-    background-color: var(--grey200);
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 19px;
-    color: var(--black);
-    width: 100%;
-    display: block;
-    &::placeholder {
-        color: var(--grey600);
+    position: relative;
+    input {
+        padding: 12px 16px;
+        background-color: var(--grey200);
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 19px;
+        color: var(--black);
+        width: 100%;
+        display: block;
+        &::placeholder {
+            color: var(--grey600);
+        }
+    }
+    svg {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        pointer-events: none;
+        + input {
+            padding: 12px 16px 12px 48px;
+        }
     }
 }

@@ -1,0 +1,35 @@
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 40px;
+}
+
+.filters {
+    margin-bottom: 36px;
+    :global(.m-input) {
+        width: calc(100% / 3);
+    }
+}
+
+.subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    margin: 18px 0;
+}
+
+.total {
+    font-size: 18px;
+    line-height: 23px;
+    margin-bottom: 18px;
+}
+
+.selects {
+    display: flex;
+    align-items: center;
+}
+
+.select:first-child {
+    margin-right: 20px;
+}

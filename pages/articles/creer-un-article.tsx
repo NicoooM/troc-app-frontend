@@ -5,7 +5,7 @@ import { getAllCategories } from "@/src/services/category.service";
 import { createItem } from "@/src/services/item.service";
 import ProfilLayout from "@/src/account/components/profil-layout/ProfilLayout";
 import Layout from "@/src/app/components/layout/Layout";
-import styles from "@/src/article/pages/CreateArticle.module.scss";
+import styles from "@/styles/pages/CreateArticle.module.scss";
 import { CaretDown } from "phosphor-react";
 
 export default function CreateArticlePage() {
@@ -39,7 +39,6 @@ export default function CreateArticlePage() {
     e.preventDefault();
     try {
       const item = await createItem(article);
-      console.log(item);
     } catch (error) {
       console.error(error);
     }
@@ -57,15 +56,16 @@ export default function CreateArticlePage() {
                   <label htmlFor="title" className="m-label">
                     Nom de l’objet
                   </label>
-                  <input
-                    type="text"
-                    id="title"
-                    placeholder="Nom de l’objet"
-                    onChange={handleChange}
-                    name="title"
-                    value={article.title}
-                    className="m-input"
-                  />
+                  <div className="m-input">
+                    <input
+                      type="text"
+                      id="title"
+                      placeholder="Nom de l’objet"
+                      onChange={handleChange}
+                      name="title"
+                      value={article.title}
+                    />
+                  </div>
                 </div>
               </div>
               <div className={styles.inputsRow}>
@@ -131,7 +131,10 @@ export default function CreateArticlePage() {
                   className="m-textarea"
                 ></textarea>
               </div>
-              <button className="m-button m-button--green" type="submit">
+              <button
+                className="m-button m-button--green m-button--fit-content"
+                type="submit"
+              >
                 Créer l’offre
               </button>
             </form>

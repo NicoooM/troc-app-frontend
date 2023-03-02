@@ -4,7 +4,7 @@ import { LoginUser } from "@/src/types/user";
 import { setTokenCookie } from "@/src/utils/authorizations";
 import { useRouter } from "next/navigation";
 import Layout from "@/src/app/components/layout/Layout";
-import styles from "@/src/app/pages/Account.module.scss";
+import styles from "@/styles/pages/Account.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -48,33 +48,38 @@ export default function ConnexionPage() {
                 <label htmlFor="email" className="m-label">
                   Adresse mail
                 </label>
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="Adresse mail"
-                  onChange={handleChange}
-                  name="email"
-                  value={user.email}
-                  className="m-input"
-                  required
-                />
+                <div className="m-input">
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Adresse mail"
+                    onChange={handleChange}
+                    name="email"
+                    value={user.email}
+                    required
+                  />
+                </div>
               </div>
               <div className={styles.formInput}>
                 <label htmlFor="password" className="m-label">
                   Mot de passe
                 </label>
-                <input
-                  id="password"
-                  type="password"
-                  placeholder="Mot de passe"
-                  onChange={handleChange}
-                  name="password"
-                  value={user.password}
-                  className="m-input"
-                  required
-                />
+                <div className="m-input">
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="Mot de passe"
+                    onChange={handleChange}
+                    name="password"
+                    value={user.password}
+                    required
+                  />
+                </div>
               </div>
-              <button className="m-button m-button--green" type="submit">
+              <button
+                className="m-button m-button--green m-button--fit-content"
+                type="submit"
+              >
                 Continuer
               </button>
               <p className={styles.register}>
