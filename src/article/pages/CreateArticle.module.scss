@@ -1,0 +1,25 @@
+.wrapper {
+    padding: 60px 200px 120px 200px;
+    :global(.m-button--green) {
+        margin-top: 36px;
+        margin-left: auto;
+    }
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 36px;
+}
+
+.inputsRow {
+    display: flex;
+    margin: 0 -12px;
+    margin-bottom: 18px;
+}
+
+.inputItem {
+    width: 50%;
+    padding: 0 12px;
+}

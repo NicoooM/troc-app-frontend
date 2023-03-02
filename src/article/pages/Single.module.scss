@@ -1,0 +1,61 @@
+.wrapper {
+    padding-bottom: 90px;
+}
+
+.infoWrapper {
+    display: flex;
+    margin: 0 -12px 30px -12px;
+}
+
+.slider {
+    padding: 0 12px;
+    width: 75%;
+}
+
+.infos {
+    width: 25%;
+    padding: 0 12px;
+}
+
+.infosContent {
+    height: 100%;
+    padding: 18px;
+    background-color: #fff;
+    box-shadow: 0px 4px 13px -6px rgba(0, 0, 0, 0.25);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    margin-bottom: 12px;
+}
+
+.againstCategory {
+    font-size: 14px;
+    line-height: 15px;
+    margin-bottom: 6px;
+}
+
+.date {
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--grey700);
+}
+
+.subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 18px;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 60px;
+}
+
+.others {
+    margin-top: 30px;
+}

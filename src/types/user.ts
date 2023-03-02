@@ -11,7 +11,7 @@ export type LoginUser = {
   password: string;
 };
 
-export type User = {
+export type UserType = {
   id: number;
   username: string;
   createdAt: string;

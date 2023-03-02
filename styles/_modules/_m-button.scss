@@ -1,8 +1,30 @@
 .m-button {
     padding: 12px 16px;
-    background-color: var(--green);
     font-size: 16px;
-    font-weight: 600;
     line-height: 20px;
-    color: #fff;
+    display: flex;
+    position: relative;
+    &--green {
+        font-weight: 600;
+        background-color: var(--green);
+        color: #fff;
+    }
+    &--grey {
+        font-weight: 500;
+        background-color: var(--grey200);
+        color: var(--black);
+    }
+    &--center {
+        justify-content: center;
+    }
+    &--icon-left {
+        svg {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+        }
+    }
 }

@@ -1,0 +1,33 @@
+.wrapper {
+    padding: 18px 0 60px 0;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+.head {
+    display: flex;
+    align-items: flex-start;
+    margin: 0 -12px;
+}
+
+.profileInfos,
+.profileSetting {
+    padding: 0 12px;
+}
+
+.profileInfos {
+    width: calc(100% / 3 * 2);
+}
+
+.profileSetting {
+    width: calc(100% / 3);
+}
+
+.profileSettingItem:not(:last-child) {
+    margin-bottom: 16px;
+}
