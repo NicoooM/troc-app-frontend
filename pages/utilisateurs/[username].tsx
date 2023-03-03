@@ -26,10 +26,6 @@ const SingleUser = ({ user, articlesData }: Props) => {
 
   const debouncedSearch = useDebounce(search, 500);
 
-  useEffect(() => {
-    console.log(page);
-  }, [page]);
-
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };

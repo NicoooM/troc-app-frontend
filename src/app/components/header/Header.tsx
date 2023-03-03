@@ -8,7 +8,10 @@ import styles from "./Header.module.scss";
 import { CaretDown, MagnifyingGlass, User } from "phosphor-react";
 import Dropdown from "../dropdown/Dropdown";
 import { RootState } from "@/src/redux/store/store";
-import { removeAuthorization } from "@/src/utils/authorizations";
+import {
+  getTokenFromCookie,
+  removeAuthorization,
+} from "@/src/utils/authorizations";
 import { useRouter } from "next/router";
 
 const Header = () => {
