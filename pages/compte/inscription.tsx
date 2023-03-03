@@ -32,7 +32,7 @@ export default function InscriptionPage() {
     event.preventDefault();
     try {
       const res = await register(user);
-      router.push("/connexion");
+      router.push("/compte/connexion");
     } catch (error) {
       console.error(error);
     }
