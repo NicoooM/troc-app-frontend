@@ -18,3 +18,9 @@ export type Article = {
   user: any;
   slug: string;
 };
+
+export type AllArticles = {
+  items: Article[];
+  total: number;
+  hasMore: boolean;
+};

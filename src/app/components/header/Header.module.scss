@@ -22,6 +22,7 @@
         color: var(--black);
         width: 22px;
         height: 22px;
+        pointer-events: none;
     }
     input {
         padding: 12px 0 12px 38px;
@@ -31,20 +32,61 @@
     }
 }
 
+.user {
+    display: flex;
+    align-items: center;
+    .userIcon {
+        width: 25px;
+        height: 25px;
+        color: var(--grey500);
+    }
+    .caretIcon {
+        width: 12px;
+        height: 12px;
+        color: var(--black);
+    }
+}
+
+.userIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--grey300);
+}
+
 .account {
+    position: relative;
     display: flex;
     align-items: center;
     margin-left: 36px;
     svg {
-        width: 25px;
-        height: 25px;
+        width: 22px;
+        height: 22px;
         color: var(--black);
     }
-    p {
-        font-size: 16px;
-        font-weight: 500;
+}
+
+.accountName {
+    font-size: 13px;
+    line-height: 20px;
+    width: 100%;
+    padding: 12px;
+    border-bottom: 1.5px solid var(--grey400);
+}
+
+.accountItem {
+    a,
+    button {
+        font-size: 14px;
         line-height: 20px;
-        margin-left: 12px;
-        color: var(--black);
+        width: 100%;
+        padding: 12px;
+        display: flex;
+        &:hover {
+            background-color: var(--grey300);
+        }
     }
 }

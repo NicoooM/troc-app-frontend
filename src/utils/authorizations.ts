@@ -23,5 +23,6 @@ export const getAuthorizationTokenHeader = () => {
 };
 
 export const removeAuthorization = () => {
+  console.log("Removing authorization");
   destroyCookie(null, "token");
 };
