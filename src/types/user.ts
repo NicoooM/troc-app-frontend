@@ -11,6 +11,12 @@ export type LoginUser = {
   password: string;
 };
 
+export type UpdateUser = {
+  username: string;
+  city: string;
+  postalCode: number;
+};
+
 export type UserType = {
   id: number;
   username: string;
