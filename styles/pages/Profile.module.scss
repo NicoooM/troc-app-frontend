@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 36px;
 }
 
 .articlesTitle {
@@ -46,4 +47,11 @@
 
 .search {
     width: 370px;
+}
+
+.articlesCount {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 12px;
 }

@@ -29,7 +29,7 @@ const AllArticles = ({
     category: defaultCategory ? defaultCategory : "",
     againstCategory: "",
     search: "",
-    limit: 8,
+    limit: 12,
   };
   const [articles, setArticles] = useState<Article[]>(defaultArticles);
   const [total, setTotal] = useState(defaultTotal);
@@ -51,7 +51,6 @@ const AllArticles = ({
 
   useEffect(() => {
     if (hasMore) {
-      console.log("has more");
       window.addEventListener("scroll", (e) => {
         if (
           window.innerHeight + window.scrollY >=
@@ -183,7 +182,7 @@ export default AllArticles;
 export async function getServerSideProps(ctx: any) {
   const { query } = ctx;
   const { category } = query;
-  const LIMIT = 8;
+  const LIMIT = 12;
 
   const articlesQuery = {
     limit: LIMIT,

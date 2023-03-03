@@ -17,8 +17,8 @@ const Header = () => {
   const user = useSelector((state: RootState) => state.user.user);
 
   const logout = () => {
-    removeAuthorization();
     dispatch(clearUser());
+    removeAuthorization();
     router.push("/");
   };
 
