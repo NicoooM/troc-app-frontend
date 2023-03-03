@@ -1,4 +1,4 @@
-import ProfilLayout from "@/src/account/components/profil-layout/ProfilLayout";
+import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout";
 import Layout from "@/src/app/components/layout/Layout";
 import ProfileInfos from "@/src/profile/components/profile-infos/ProfileInfos";
 import { RootState } from "@/src/redux/store/store";
@@ -14,6 +14,7 @@ import { Article } from "@/src/types/article";
 import { getAllItems } from "@/src/services/item.service";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import useDebounce from "@/src/hooks/useDebounce";
+import ArticleOptions from "@/src/article/components/article-options/ArticleOptions";
 
 const MyAccount = () => {
   const LIMIT = 12;
@@ -120,7 +121,7 @@ const MyAccount = () => {
   };
 
   return (
-    <ProfilLayout needAuth={true}>
+    <ProfileLayout needAuth={true}>
       <Layout>
         <div className="container">
           <div className={styles.wrapper}>
@@ -185,6 +186,9 @@ const MyAccount = () => {
                       <Link href={`/articles/${article.slug}`}>
                         <ArticleCard article={article} />
                       </Link>
+                      <div className={styles.options}>
+                        <ArticleOptions article={article} />
+                      </div>
                     </li>
                   ))}
               </ul>
@@ -192,7 +196,7 @@ const MyAccount = () => {
           </div>
         </div>
       </Layout>
-    </ProfilLayout>
+    </ProfileLayout>
   );
 };
 

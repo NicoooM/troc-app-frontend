@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useMemo } from "react";
 import styles from "./ArticleCard.module.scss";
 import { readableDate } from "@/src/utils/formatDate";
+import ArticleOptions from "../article-options/ArticleOptions";
 
 type Props = {
   article: Article;

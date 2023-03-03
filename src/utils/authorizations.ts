@@ -6,7 +6,6 @@ export const setTokenCookie = (token: string) => {
     path: "/",
   };
   setCookie(null, "token", token, cookiesOptions);
-  console.log("token set");
 };
 
 export const getTokenFromCookie = () => {
@@ -23,6 +22,7 @@ export const getAuthorizationTokenHeader = () => {
 };
 
 export const removeAuthorization = () => {
-  console.log("Removing authorization");
-  destroyCookie(null, "token");
+  destroyCookie(null, "token", {
+    path: "/",
+  });
 };

@@ -50,6 +50,13 @@ export const putRequest = (url: string, formData: object) => {
   return axios.put(finalUrl, formData, { headers: headersWithToken });
 };
 
+export const patchRequest = (url: string, formData: object) => {
+  const token = getTokenFromCookie();
+  const headersWithToken = createHeaders(token);
+  const finalUrl = apiurl + url;
+  return axios.patch(finalUrl, formData, { headers: headersWithToken });
+};
+
 export const deleteRequest = (url: string) => {
   const token = getTokenFromCookie();
   const headersWithToken = createHeaders(token);
