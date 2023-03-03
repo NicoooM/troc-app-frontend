@@ -5,6 +5,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" />
 <img src="https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge" />
 
+## Create a .env file like the .env.example
+
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
 ## Getting Started
 
 First, run the development server:
