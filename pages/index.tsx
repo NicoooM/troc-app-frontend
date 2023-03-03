@@ -1,4 +1,4 @@
-import ProfilLayout from "@/src/account/components/profil-layout/ProfilLayout";
+import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout";
 import Layout from "@/src/app/components/layout/Layout";
 import styles from "@/styles/pages/Home.module.scss";
 import Image from "next/image";
@@ -13,7 +13,7 @@ type Props = {
 
 const Home = ({ latestItems }: Props) => {
   return (
-    <ProfilLayout>
+    <ProfileLayout>
       <Layout>
         <div className="container">
           <div className={styles.headWrapper}>
@@ -66,7 +66,7 @@ const Home = ({ latestItems }: Props) => {
           )}
         </div>
       </Layout>
-    </ProfilLayout>
+    </ProfileLayout>
   );
 };
 

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import LogoIcon from "../../icons/LogoIcon";
 import styles from "./Footer.module.scss";
 
@@ -12,14 +13,27 @@ const Footer = () => {
           </div>
           <div className="m-grid__item">
             <p className={styles.title}>Le site</p>
-            <p className={styles.link}>Tous les articles</p>
-            <p className={styles.link}>Echanger mon objet</p>
-            <p className={styles.link}>Rechercher dans le site</p>
-            <p className={styles.link}>A propos</p>
+            <Link href="/" className={styles.link}>
+              Accueil
+            </Link>
+            <Link href="/articles" className={styles.link}>
+              Tous les articles
+            </Link>
+            <Link href="/articles/creer-un-article" className={styles.link}>
+              Echanger mon objet
+            </Link>
           </div>
           <div className="m-grid__item">
             <p className={styles.title}>Compte</p>
-            <p className={styles.link}>© 2023 TradeHub</p>
+            <Link href="/compte/mon-compte" className={styles.link}>
+              Mon compte
+            </Link>
+            <Link href="/compte/connexion" className={styles.link}>
+              Se connecter
+            </Link>
+            <Link href="/compte/inscription" className={styles.link}>
+              S’inscrire
+            </Link>
           </div>
           <div className="m-grid__item">
             <p className={styles.title}>Juridique</p>

@@ -14,7 +14,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const ProfilLayout = ({ needAuth, children }: Props) => {
+const ProfileLayout = ({ needAuth, children }: Props) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.user);
@@ -44,4 +44,4 @@ const ProfilLayout = ({ needAuth, children }: Props) => {
   return <>{children}</>;
 };
 
-export default ProfilLayout;
+export default ProfileLayout;

@@ -1,4 +1,4 @@
-import ProfilLayout from "@/src/account/components/profil-layout/ProfilLayout";
+import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout";
 import Layout from "@/src/app/components/layout/Layout";
 import { RootState } from "@/src/redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,7 +42,7 @@ const EditProfile = () => {
   };
 
   return (
-    <ProfilLayout needAuth={true}>
+    <ProfileLayout needAuth={true}>
       <Layout>
         <div className="container">
           <div className={styles.wrapper}>
@@ -93,7 +93,7 @@ const EditProfile = () => {
           </div>
         </div>
       </Layout>
-    </ProfilLayout>
+    </ProfileLayout>
   );
 };
 

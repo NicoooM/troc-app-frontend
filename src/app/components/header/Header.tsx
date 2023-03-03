@@ -1,4 +1,4 @@
-import ProfilLayout from "@/src/account/components/profil-layout/ProfilLayout";
+import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout";
 import LogoIcon from "@/src/app/icons/LogoIcon";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
@@ -77,15 +77,15 @@ const Header = () => {
     } else {
       return (
         <Link href={"/compte/connexion"} className={styles.account}>
-          <User />
-          <span className="sr-only">Se connecter</span>
+          <User className={styles.userIcon} />
+          <p className={styles.myAccount}>Mon compte</p>
         </Link>
       );
     }
   }, [user.email]);
 
   return (
-    <ProfilLayout>
+    <ProfileLayout>
       <header className={styles.wrapper}>
         <div className="container">
           <div className={styles.nav}>
@@ -102,7 +102,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-    </ProfilLayout>
+    </ProfileLayout>
   );
 };
 
