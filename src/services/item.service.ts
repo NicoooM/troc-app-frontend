@@ -1,5 +1,10 @@
 import { AllArticles, Article, CreateArticle } from "../types/article";
-import { getRequest, patchRequest, postRequest } from "../utils/useApi";
+import {
+  deleteRequest,
+  getRequest,
+  patchRequest,
+  postRequest,
+} from "../utils/useApi";
 
 export const createItem = async (data: CreateArticle) => {
   const response = await postRequest("/items", data);
@@ -21,5 +26,10 @@ export const updateItem = async (
   data: CreateArticle
 ): Promise<Article> => {
   const response = await patchRequest(`/items/${id}`, data);
+  return response.data;
+};
+
+export const deleteItem = async (id: number) => {
+  const response = await deleteRequest(`/items/${id}`);
   return response.data;
 };

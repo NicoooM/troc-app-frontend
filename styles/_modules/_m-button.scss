@@ -15,6 +15,11 @@
         background-color: var(--grey200);
         color: var(--black);
     }
+    &--red {
+        font-weight: 500;
+        background-color: var(--red);
+        color: #fff;
+    }
     &--border {
         font-weight: 500;
         color: var(--black);
