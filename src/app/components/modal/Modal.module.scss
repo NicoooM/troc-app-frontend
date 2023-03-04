@@ -1,0 +1,39 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    position: relative;
+    width: 432px;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background-color: var(--grey300);
+}
+
+.title {
+    font-size: 18px;
+    line-height: 23px;
+}
+
+.close {
+    display: flex;
+    padding: 4px;
+    svg {
+        min-width: 22px;
+        min-height: 22px;
+    }
+}

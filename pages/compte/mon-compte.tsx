@@ -10,7 +10,7 @@ import { removeAuthorization } from "@/src/utils/authorizations";
 import { clearUser } from "@/src/redux/slices/userSlice";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
-import { Article } from "@/src/types/article";
+import { AllArticles, Article } from "@/src/types/article";
 import { getAllItems } from "@/src/services/item.service";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import useDebounce from "@/src/hooks/useDebounce";
@@ -27,6 +27,7 @@ const MyAccount = () => {
   const [total, setTotal] = useState(0);
   const [totalSearch, setTotalSearch] = useState<null | number>(null);
   const [search, setSearch] = useState("");
+  const [updateArticles, setUpdateArticles] = useState(false);
 
   const debouncedSearch = useDebounce(search, 500);
 
@@ -38,40 +39,52 @@ const MyAccount = () => {
     setPage(page + 1);
   };
 
-  useEffect(() => {
-    if (user.id && search === "") {
-      const query = {
-        limit: LIMIT,
-        userId: user.id,
-      };
-      getAllItems(query).then((data) => {
-        setArticles(data.items);
-        setTotal(data.total);
-        setHasMore(data.hasMore);
-        setTotalSearch(null);
-        setPage(1);
-      });
-    }
-  }, [user, debouncedSearch]);
+  const setDataSearch = (data: AllArticles) => {
+    setArticles(data.items);
+    setHasMore(data.hasMore);
+    setPage(1);
+    setUpdateArticles(false);
+  };
 
   useEffect(() => {
-    if (user.id && search !== "") {
-      const query = {
-        limit: LIMIT,
-        userId: user.id,
-        search,
-      };
-      getAllItems(query).then((data) => {
-        setArticles(data.items);
-        setTotalSearch(data.total);
-        setHasMore(data.hasMore);
-        setPage(1);
-      });
+    const query: any = {
+      limit: LIMIT,
+      userId: user.id,
+    };
+    if (updateArticles) {
+      getAllItems(query)
+        .then((data) => {
+          setTotal(data.total);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  }, [debouncedSearch]);
+    if (search === "") {
+      getAllItems(query)
+        .then((data) => {
+          setDataSearch(data);
+          setTotal(data.total);
+          setTotalSearch(null);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      query.search = search;
+      getAllItems(query)
+        .then((data) => {
+          setDataSearch(data);
+          setTotalSearch(data.total);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [user, debouncedSearch, updateArticles]);
 
   useEffect(() => {
-    if (user.id) {
+    if (user.id && page > 1) {
       const query = {
         limit: LIMIT,
         page,
@@ -187,7 +200,10 @@ const MyAccount = () => {
                         <ArticleCard article={article} />
                       </Link>
                       <div className={styles.options}>
-                        <ArticleOptions article={article} />
+                        <ArticleOptions
+                          article={article}
+                          setUpdateArticles={setUpdateArticles}
+                        />
                       </div>
                     </li>
                   ))}
