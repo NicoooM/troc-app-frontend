@@ -13,6 +13,7 @@ import {
   removeAuthorization,
 } from "@/src/utils/authorizations";
 import { useRouter } from "next/router";
+import Search from "../search/Search";
 
 const Header = () => {
   const router = useRouter();
@@ -93,10 +94,7 @@ const Header = () => {
               <LogoIcon />
               <span className="sr-only">Revenir à l'accueil</span>
             </Link>
-            <div className={styles.search}>
-              <MagnifyingGlass />
-              <input type="text" placeholder="Rechercher un article" />
-            </div>
+            <Search />
             {renderSwapButton}
             {renderAccountButton}
           </div>
