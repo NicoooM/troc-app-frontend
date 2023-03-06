@@ -1,0 +1,27 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #fff;
+    &:hover {
+        background-color: var(--grey200);
+    }
+}
+
+.image {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    position: relative;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.title {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
