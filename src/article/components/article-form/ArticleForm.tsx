@@ -2,8 +2,10 @@ import { getAllCategories } from "@/src/services/category.service";
 import { createItem, updateItem } from "@/src/services/item.service";
 import { Article, CreateArticle } from "@/src/types/article";
 import { Category } from "@/src/types/category";
+import { useRouter } from "next/router";
 import { CaretDown } from "phosphor-react";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import styles from "./ArticleForm.module.scss";
 
 type Props = {
@@ -12,6 +14,7 @@ type Props = {
 };
 
 const ArticleForm = ({ data, isEdit = false }: Props) => {
+  const router = useRouter();
   const [article, setArticle] = useState<CreateArticle>({} as CreateArticle);
   const [mounted, setMounted] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -50,14 +53,20 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
     e.preventDefault();
     if (isEdit && data) {
       try {
-        const item = await updateItem(data.id, article);
+        await updateItem(data.id, article);
+        toast.success("Votre article a bien été modifié");
+        router.push("/compte/mon-compte");
       } catch (error) {
+        toast.error("Une erreur est survenue");
         console.error(error);
       }
     } else {
       try {
-        const item = await createItem(article);
+        await createItem(article);
+        toast.success("Votre article a bien été créé");
+        router.push("/compte/mon-compte");
       } catch (error) {
+        toast.error("Une erreur est survenue");
         console.error(error);
       }
     }

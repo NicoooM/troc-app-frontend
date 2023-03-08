@@ -5,15 +5,13 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { clearUser } from "@/src/redux/slices/userSlice";
 import styles from "./Header.module.scss";
-import { CaretDown, MagnifyingGlass, User } from "phosphor-react";
+import { CaretDown, User } from "phosphor-react";
 import Dropdown from "../dropdown/Dropdown";
 import { RootState } from "@/src/redux/store/store";
-import {
-  getTokenFromCookie,
-  removeAuthorization,
-} from "@/src/utils/authorizations";
+import { removeAuthorization } from "@/src/utils/authorizations";
 import { useRouter } from "next/router";
 import Search from "../search/Search";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const router = useRouter();
@@ -23,6 +21,7 @@ const Header = () => {
   const logout = () => {
     dispatch(clearUser());
     removeAuthorization();
+    toast.success("Vous êtes déconnecté");
     router.push("/");
   };
 

@@ -6,6 +6,7 @@ import Layout from "@/src/app/components/layout/Layout";
 import styles from "@/styles/pages/Account.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function InscriptionPage() {
   const router = useRouter();
@@ -31,10 +32,11 @@ export default function InscriptionPage() {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const res = await register(user);
+      await register(user);
+      toast.success("Votre compte a bien été créé");
       router.push("/compte/connexion");
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.log(error);
     }
   };
 

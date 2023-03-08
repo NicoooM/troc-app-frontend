@@ -3,7 +3,7 @@ import { getAllItems } from "@/src/services/item.service";
 import { Article } from "@/src/types/article";
 import Link from "next/link";
 import { MagnifyingGlass } from "phosphor-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import SearchResult from "../search-result/SearchResult";
 import styles from "./Search.module.scss";
 
@@ -14,6 +14,8 @@ const Search = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [clickedOutside, setClickedOutside] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const isOpened =
+    articles.length > 0 && search !== "" && (!clickedOutside || isFocused);
 
   const debouncedSearch = useDebounce(search, 500);
 
@@ -24,14 +26,15 @@ const Search = () => {
 
   const handleClickOutside = (e: MouseEvent) => {
     e.stopPropagation();
-    console.log("click outside");
     if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+      console.log("clicked outside");
       setClickedOutside(true);
     }
   };
 
   const onFocus = () => {
     setIsFocused(true);
+    setClickedOutside(false);
   };
 
   const onBlur = () => {
@@ -55,34 +58,36 @@ const Search = () => {
   }, [debouncedSearch]);
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    if (isOpened) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [isOpened]);
 
-  const renderResults = () => {
-    if (articles.length > 0 && search !== "") {
-      if (!clickedOutside || isFocused) {
-        return (
-          <div className={styles.results}>
-            <ul>
-              {articles.map((article) => (
-                <li key={article.slug}>
-                  <Link href={`/articles/${article.slug}`}>
-                    <SearchResult article={article} />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link href={"/articles"} className={styles.advancedSearch}>
-              <p>Recherche avancée</p>
-            </Link>
-          </div>
-        );
-      }
+  const renderResults = useMemo(() => {
+    if (isOpened) {
+      return (
+        <div className={styles.results}>
+          <ul>
+            {articles.map((article) => (
+              <li key={article.slug}>
+                <Link href={`/articles/${article.slug}`}>
+                  <SearchResult article={article} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link href={"/articles"} className={styles.advancedSearch}>
+            <p>Recherche avancée</p>
+          </Link>
+        </div>
+      );
     }
-  };
+  }, [articles, isOpened]);
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
@@ -98,7 +103,7 @@ const Search = () => {
           onBlur={onBlur}
         />
       </div>
-      {renderResults()}
+      {renderResults}
     </div>
   );
 };
