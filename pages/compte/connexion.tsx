@@ -7,6 +7,7 @@ import Layout from "@/src/app/components/layout/Layout";
 import styles from "@/styles/pages/Account.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { toast } from "react-toastify";
 
 export default function ConnexionPage() {
   const router = useRouter();
@@ -23,10 +24,11 @@ export default function ConnexionPage() {
     event.preventDefault();
     try {
       const { access_token } = await login(user);
+      toast.success("Vous êtes connecté");
       setTokenCookie(access_token);
       router.push("/");
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.log(error);
     }
   };
 

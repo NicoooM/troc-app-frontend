@@ -15,6 +15,7 @@ import { getAllItems } from "@/src/services/item.service";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import useDebounce from "@/src/hooks/useDebounce";
 import ArticleOptions from "@/src/article/components/article-options/ArticleOptions";
+import { toast } from "react-toastify";
 
 const MyAccount = () => {
   const LIMIT = 12;
@@ -130,6 +131,7 @@ const MyAccount = () => {
   const logout = () => {
     dispatch(clearUser());
     removeAuthorization();
+    toast.success("Vous êtes déconnecté");
     router.push("/");
   };
 
