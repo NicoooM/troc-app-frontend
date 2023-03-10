@@ -30,7 +30,7 @@ const EditProfile = () => {
     });
   };
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const data = await updateUser(userData);
@@ -48,7 +48,7 @@ const EditProfile = () => {
           <div className={styles.wrapper}>
             <h1 className={styles.title}>Modifier mon compte</h1>
             {mounted && (
-              <form onSubmit={onSubmit}>
+              <form onSubmit={handleSubmit}>
                 <div className={styles.inputsRow}>
                   <div className={styles.inputItem}>
                     <label htmlFor="username" className="m-label">

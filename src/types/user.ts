@@ -25,3 +25,8 @@ export type UserType = {
   city: string;
   postalCode: number;
 };
+
+export type ResetPassword = {
+  token: string;
+  password: string;
+};
