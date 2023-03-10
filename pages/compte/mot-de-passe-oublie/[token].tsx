@@ -1,32 +1,34 @@
-import { login } from "@/src/services/auth.service";
+import { resetPassword } from "@/src/services/auth.service";
 import { useState } from "react";
-import { LoginUser } from "@/src/types/user";
-import { setTokenCookie } from "@/src/utils/authorizations";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Layout from "@/src/app/components/layout/Layout";
 import styles from "@/styles/pages/Account.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "react-toastify";
 
-export default function ConnexionPage() {
+export default function ForgotPasswordPage() {
   const router = useRouter();
-  const [user, setUser] = useState<LoginUser>({
-    email: "",
+  const { token } = router.query;
+  const [data, setData] = useState<any>({
     password: "",
+    passwordConfirm: "",
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({ ...user, [event.target.name]: event.target.value });
+    setData({ ...data, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const { access_token } = await login(user);
-      toast.success("Vous êtes connecté");
-      setTokenCookie(access_token);
-      router.push("/");
+      if (typeof token !== "string") return toast.error("Token invalide");
+      await resetPassword({
+        password: data.password,
+        token,
+      });
+      toast.success("Mot de passe modifié avec succès");
+      router.push("/compte/connexion");
     } catch (error: any) {
       console.log(error);
     }
@@ -44,36 +46,36 @@ export default function ConnexionPage() {
             />
           </div>
           <div className={styles.form}>
-            <h1 className={styles.title}>Se connecter</h1>
+            <h1 className={styles.title}>Mot de passe oublié</h1>
             <form onSubmit={handleSubmit}>
               <div className={styles.formInput}>
-                <label htmlFor="email" className="m-label">
-                  Adresse mail
-                </label>
-                <div className="m-input">
-                  <input
-                    id="email"
-                    type="email"
-                    placeholder="Adresse mail"
-                    onChange={handleChange}
-                    name="email"
-                    value={user.email}
-                    required
-                  />
-                </div>
-              </div>
-              <div className={styles.formInput}>
                 <label htmlFor="password" className="m-label">
-                  Mot de passe
+                  Nouveau mot de passe
                 </label>
                 <div className="m-input">
                   <input
                     id="password"
                     type="password"
-                    placeholder="Mot de passe"
+                    placeholder="Nouveau mot de passe"
                     onChange={handleChange}
                     name="password"
-                    value={user.password}
+                    value={data.password}
+                    required
+                  />
+                </div>
+              </div>
+              <div className={styles.formInput}>
+                <label htmlFor="passwordConfirm" className="m-label">
+                  Confirmer le mot de passe
+                </label>
+                <div className="m-input">
+                  <input
+                    id="passwordConfirm"
+                    type="password"
+                    placeholder="Adresse mail"
+                    onChange={handleChange}
+                    name="passwordConfirm"
+                    value={data.passwordConfirm}
                     required
                   />
                 </div>
@@ -85,13 +87,7 @@ export default function ConnexionPage() {
                 Continuer
               </button>
               <p className={styles.forgot}>
-                <Link href={"/compte/mot-de-passe-oublie"}>
-                  Mot de passe oublié ?
-                </Link>
-              </p>
-              <p className={styles.register}>
-                Pas de compte ?{" "}
-                <Link href={"/compte/inscription"}>S'inscrire</Link>
+                <Link href={"/compte/connexion"}>Annuler</Link>
               </p>
             </form>
           </div>

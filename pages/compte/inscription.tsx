@@ -29,7 +29,7 @@ export default function InscriptionPage() {
     setPasswordConfirm(event.target.value);
   };
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       await register(user);
@@ -53,7 +53,7 @@ export default function InscriptionPage() {
           </div>
           <div className={styles.form}>
             <h1 className={styles.title}>Créer un compte</h1>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className={styles.formInput}>
                 <label htmlFor="" className="m-label">
                   Nom utilisateur

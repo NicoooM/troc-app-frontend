@@ -49,7 +49,7 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
     setArticle({ ...article, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isEdit && data) {
       try {
@@ -73,7 +73,7 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       {mounted && (
         <>
           <div className={styles.inputsRow}>

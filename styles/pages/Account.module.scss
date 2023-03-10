@@ -40,8 +40,8 @@
     margin-bottom: 12px;
 }
 
-.register {
-    margin-top: 30px;
+.forgot {
+    margin-top: 24px;
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;
@@ -49,4 +49,22 @@
         color: var(--green);
         text-decoration: underline;
     }
+}
+
+.register {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    a {
+        color: var(--green);
+        text-decoration: underline;
+    }
+}
+
+.titleForgotPassword {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 30px;
 }
