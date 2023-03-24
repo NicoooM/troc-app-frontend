@@ -4,11 +4,11 @@ import styles from "@/styles/pages/Home.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllItems } from "@/src/services/item.service";
-import { Article } from "@/src/types/article";
+import { ArticleType } from "@/src/types/article";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 
 type Props = {
-  latestItems: Article[];
+  latestItems: ArticleType[];
 };
 
 const Home = ({ latestItems }: Props) => {
@@ -54,7 +54,7 @@ const Home = ({ latestItems }: Props) => {
                 </Link>
               </div>
               <ul className="m-grid">
-                {latestItems.map((article: Article) => (
+                {latestItems.map((article: ArticleType) => (
                   <li className="m-grid__item" key={article.slug}>
                     <Link href={`/articles/${article.slug}`}>
                       <ArticleCard article={article} />

@@ -1,15 +1,17 @@
 import { getAllCategories } from "@/src/services/category.service";
 import { createItem, updateItem } from "@/src/services/item.service";
-import { Article, CreateArticle } from "@/src/types/article";
+import { ArticleType, CreateArticle, UpdateArticle } from "@/src/types/article";
 import { Category } from "@/src/types/category";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { CaretDown } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
+import ArticleFiles from "../article-files/ArticleFiles";
 import styles from "./ArticleForm.module.scss";
 
 type Props = {
-  data?: Article;
+  data?: ArticleType;
   isEdit?: boolean;
 };
 
@@ -18,6 +20,7 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
   const [article, setArticle] = useState<CreateArticle>({} as CreateArticle);
   const [mounted, setMounted] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [filesToDelete, setFilesToDelete] = useState<number[]>([]);
 
   useEffect(() => {
     if (data) {
@@ -26,6 +29,7 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
         description: data.description,
         category: data.category.id,
         againstCategory: data.againstCategory.id,
+        files: [],
       });
     }
     setMounted(true);
@@ -53,7 +57,11 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
     e.preventDefault();
     if (isEdit && data) {
       try {
-        await updateItem(data.id, article);
+        const updateArticle: UpdateArticle = {
+          ...article,
+          filesToDelete,
+        };
+        await updateItem(data.id, updateArticle);
         toast.success("Votre article a bien été modifié");
         router.push("/compte/mon-compte");
       } catch (error) {
@@ -76,6 +84,13 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
     <form onSubmit={handleSubmit}>
       {mounted && (
         <>
+          <ArticleFiles
+            article={article}
+            setArticle={setArticle}
+            defaultFiles={data?.files}
+            filesToDelete={filesToDelete}
+            setFilesToDelete={setFilesToDelete}
+          />
           <div className={styles.inputsRow}>
             <div className={styles.inputItem}>
               <label htmlFor="title" className="m-label">

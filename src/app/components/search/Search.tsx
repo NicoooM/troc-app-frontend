@@ -1,6 +1,6 @@
 import useDebounce from "@/src/hooks/useDebounce";
 import { getAllItems } from "@/src/services/item.service";
-import { Article } from "@/src/types/article";
+import { ArticleType } from "@/src/types/article";
 import Link from "next/link";
 import { MagnifyingGlass } from "phosphor-react";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -11,7 +11,7 @@ const Search = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [search, setSearch] = useState<string>("");
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<ArticleType[]>([]);
   const [clickedOutside, setClickedOutside] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const isOpened =
@@ -27,7 +27,6 @@ const Search = () => {
   const handleClickOutside = (e: MouseEvent) => {
     e.stopPropagation();
     if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
-      console.log("clicked outside");
       setClickedOutside(true);
     }
   };

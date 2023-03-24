@@ -5,9 +5,10 @@ export type CreateArticle = {
   description: string;
   category: number;
   againstCategory: number;
+  files: any[];
 };
 
-export type Article = {
+export type ArticleType = {
   id: number;
   title: string;
   createdAt: string;
@@ -17,10 +18,15 @@ export type Article = {
   againstCategory: Category;
   user: any;
   slug: string;
+  files: any[];
 };
 
 export type AllArticles = {
-  items: Article[];
+  items: ArticleType[];
   total: number;
   hasMore: boolean;
+};
+
+export type UpdateArticle = CreateArticle & {
+  filesToDelete: number[];
 };
