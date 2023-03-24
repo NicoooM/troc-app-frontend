@@ -10,7 +10,7 @@ import { removeAuthorization } from "@/src/utils/authorizations";
 import { clearUser } from "@/src/redux/slices/userSlice";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
-import { AllArticles, Article } from "@/src/types/article";
+import { AllArticles, ArticleType } from "@/src/types/article";
 import { getAllItems } from "@/src/services/item.service";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import useDebounce from "@/src/hooks/useDebounce";
@@ -22,7 +22,7 @@ const MyAccount = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.user);
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<ArticleType[]>([]);
   const [hasMore, setHasMore] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -196,7 +196,7 @@ const MyAccount = () => {
               {renderTotalSearchCount}
               <ul className="m-grid">
                 {articles &&
-                  articles.map((article: Article) => (
+                  articles.map((article: ArticleType) => (
                     <li className="m-grid__item" key={article.slug}>
                       <Link href={`/articles/${article.slug}`}>
                         <ArticleCard article={article} />

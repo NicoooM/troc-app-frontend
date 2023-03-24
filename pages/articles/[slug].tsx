@@ -1,18 +1,18 @@
 import Layout from "@/src/app/components/layout/Layout";
 import ArticleSlider from "@/src/article/components/article-slider/ArticleSlider";
 import { getAllItems, getItem } from "@/src/services/item.service";
-import { AllArticles, Article } from "@/src/types/article";
+import { AllArticles, ArticleType } from "@/src/types/article";
 import styles from "@/styles/pages/Single.module.scss";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { readableDate } from "@/src/utils/formatDate";
 import Link from "next/link";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import { User } from "phosphor-react";
 
 type Props = {
-  article: Article;
-  userArticles: Article[];
-  categoryArticles: Article[];
+  article: ArticleType;
+  userArticles: ArticleType[];
+  categoryArticles: ArticleType[];
 };
 
 const SingleArticle = ({ article, userArticles, categoryArticles }: Props) => {
@@ -34,7 +34,7 @@ const SingleArticle = ({ article, userArticles, categoryArticles }: Props) => {
         <div className={styles.wrapper}>
           <div className={styles.infoWrapper}>
             <div className={styles.slider}>
-              <ArticleSlider />
+              <ArticleSlider images={article?.files} />
             </div>
             <div className={styles.infos}>
               <div className={styles.infosContent}>
@@ -64,7 +64,7 @@ const SingleArticle = ({ article, userArticles, categoryArticles }: Props) => {
             </h2>
             <ul className="m-grid">
               {userArticles &&
-                userArticles.map((article: Article) => (
+                userArticles.map((article: ArticleType) => (
                   <li className="m-grid__item" key={article.slug}>
                     <Link href={`/articles/${article.slug}`}>
                       <ArticleCard article={article} />
@@ -77,7 +77,7 @@ const SingleArticle = ({ article, userArticles, categoryArticles }: Props) => {
             <h2 className={styles.subtitle}>Dans la même catégorie</h2>
             <ul className="m-grid">
               {categoryArticles &&
-                categoryArticles.map((article: Article) => (
+                categoryArticles.map((article: ArticleType) => (
                   <li className="m-grid__item" key={article.slug}>
                     <Link href={`/articles/${article.slug}`}>
                       <ArticleCard article={article} />
@@ -97,7 +97,7 @@ export default SingleArticle;
 export async function getServerSideProps(context: any) {
   const LIMIT = 4;
   const { slug } = context.params;
-  const article: Article = await getItem(slug);
+  const article: ArticleType = await getItem(slug);
 
   const category = article.category.id;
   const userId = article.user.id;

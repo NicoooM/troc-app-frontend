@@ -1,7 +1,7 @@
 import Layout from "@/src/app/components/layout/Layout";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import { getAllItems } from "@/src/services/item.service";
-import { Article } from "@/src/types/article";
+import { ArticleType } from "@/src/types/article";
 import Link from "next/link";
 import { CaretDown, MagnifyingGlass } from "phosphor-react";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -11,7 +11,7 @@ import { getAllCategories } from "@/src/services/category.service";
 import { Category } from "@/src/types/category";
 
 type Props = {
-  defaultArticles: Article[];
+  defaultArticles: ArticleType[];
   defaultCategory?: number;
   categories: Category[];
   defaultTotal: number;
@@ -31,7 +31,7 @@ const AllArticles = ({
     search: "",
     limit: 12,
   };
-  const [articles, setArticles] = useState<Article[]>(defaultArticles);
+  const [articles, setArticles] = useState<ArticleType[]>(defaultArticles);
   const [total, setTotal] = useState(defaultTotal);
   const [hasMore, setHasMore] = useState(defaultHasMore);
   const [page, setPage] = useState(1);
@@ -164,7 +164,7 @@ const AllArticles = ({
         </p>
         <ul className="m-grid">
           {articles &&
-            articles.map((article: Article) => (
+            articles.map((article: ArticleType) => (
               <li className="m-grid__item" key={article.slug}>
                 <Link href={`/articles/${article.slug}`}>
                   <ArticleCard article={article} />

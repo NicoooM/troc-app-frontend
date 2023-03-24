@@ -3,16 +3,17 @@ import { getTokenFromCookie } from "./authorizations";
 
 const apiurl = process.env.NEXT_PUBLIC_API_URL;
 
-const createHeaders = (token?: string) => {
+const createHeaders = (token?: string, formData: boolean = false) => {
+  const contentType = formData ? "multipart/form-data" : "application/json";
   if (token) {
     return {
       Authorization: "Bearer " + token,
       Accept: "application/json",
-      "Content-Type": "application/json",
+      "Content-Type": contentType,
     };
   } else {
     return {
-      "Content-Type": "application/json",
+      "Content-Type": contentType,
     };
   }
 };
@@ -36,9 +37,13 @@ export const postRequestWithoutToken = (url: string, formData: object) => {
   return axios.post(finalUrl, formData, { headers: headersWithoutToken });
 };
 
-export const postRequest = (url: string, formData: any) => {
+export const postRequest = (
+  url: string,
+  formData: any,
+  formDataType: boolean = false
+) => {
   const token = getTokenFromCookie();
-  const headersWithToken = createHeaders(token);
+  const headersWithToken = createHeaders(token, formDataType);
   const finalUrl = apiurl + url;
   return axios.post(finalUrl, formData, { headers: headersWithToken });
 };
@@ -50,9 +55,13 @@ export const putRequest = (url: string, formData: object) => {
   return axios.put(finalUrl, formData, { headers: headersWithToken });
 };
 
-export const patchRequest = (url: string, formData: object) => {
+export const patchRequest = (
+  url: string,
+  formData: object,
+  formDataType: boolean = false
+) => {
   const token = getTokenFromCookie();
-  const headersWithToken = createHeaders(token);
+  const headersWithToken = createHeaders(token, formDataType);
   const finalUrl = apiurl + url;
   return axios.patch(finalUrl, formData, { headers: headersWithToken });
 };

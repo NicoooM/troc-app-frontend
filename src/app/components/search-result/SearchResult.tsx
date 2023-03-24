@@ -1,28 +1,25 @@
-import { Article } from "@/src/types/article";
+import { ArticleType } from "@/src/types/article";
 import Image from "next/image";
+import { Article } from "phosphor-react";
 import { useMemo } from "react";
 import styles from "./SearchResult.module.scss";
 
 type Props = {
-  article: Article;
+  article: ArticleType;
 };
 
 const SearchResult = ({ article }: Props) => {
-  const renderImage = useMemo(() => {
-    return (
-      <div className={styles.image}>
-        <Image
-          src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1412&q=80"
-          fill
-          alt={article.title}
-        />
-      </div>
-    );
-  }, []);
+  const renderImage = () => {
+    if (article.files.length > 0) {
+      return <Image src={article.files[0].Location} fill alt={article.title} />;
+    } else {
+      return <Article />;
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
-      {renderImage}
+      <div className={styles.image}>{renderImage()}</div>
       <p className={styles.title}>{article.title}</p>
     </div>
   );

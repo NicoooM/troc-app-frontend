@@ -1,5 +1,5 @@
 import Dropdown from "@/src/app/components/dropdown/Dropdown";
-import { Article } from "@/src/types/article";
+import { ArticleType } from "@/src/types/article";
 import Link from "next/link";
 import { DotsThreeVertical, PencilSimple, Trash } from "phosphor-react";
 import { useState } from "react";
@@ -8,7 +8,7 @@ import Modal from "@/src/app/components/modal/Modal";
 import { deleteItem } from "@/src/services/item.service";
 
 type Props = {
-  article: Article;
+  article: ArticleType;
   setUpdateArticles: (updateArticles: boolean) => void;
 };
 

@@ -4,7 +4,7 @@ import { MagnifyingGlass } from "phosphor-react";
 import styles from "@/styles/pages/Profile.module.scss";
 import { UserType } from "@/src/types/user";
 import { getUser } from "@/src/services/user.service";
-import { AllArticles, Article } from "@/src/types/article";
+import { AllArticles, ArticleType } from "@/src/types/article";
 import { getAllItems } from "@/src/services/item.service";
 import { useEffect, useMemo, useState } from "react";
 import useDebounce from "@/src/hooks/useDebounce";
@@ -18,7 +18,7 @@ type Props = {
 
 const SingleUser = ({ user, articlesData }: Props) => {
   const LIMIT = 12;
-  const [articles, setArticles] = useState<Article[]>(articlesData.items);
+  const [articles, setArticles] = useState<ArticleType[]>(articlesData.items);
   const [hasMore, setHasMore] = useState(articlesData.hasMore);
   const [page, setPage] = useState(1);
   const [totalSearch, setTotalSearch] = useState<null | number>(null);
@@ -133,7 +133,7 @@ const SingleUser = ({ user, articlesData }: Props) => {
           {renderTotalSearchCount}
           <ul className="m-grid">
             {articles &&
-              articles.map((article: Article) => (
+              articles.map((article: ArticleType) => (
                 <li className="m-grid__item" key={article.slug}>
                   <Link href={`/articles/${article.slug}`}>
                     <ArticleCard article={article} />

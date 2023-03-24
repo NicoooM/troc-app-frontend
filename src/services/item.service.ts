@@ -1,4 +1,9 @@
-import { AllArticles, Article, CreateArticle } from "../types/article";
+import {
+  AllArticles,
+  ArticleType,
+  CreateArticle,
+  UpdateArticle,
+} from "../types/article";
 import {
   deleteRequest,
   getRequest,
@@ -7,7 +12,15 @@ import {
 } from "../utils/useApi";
 
 export const createItem = async (data: CreateArticle) => {
-  const response = await postRequest("/items", data);
+  const formData = new FormData();
+  formData.append("title", data.title);
+  formData.append("description", data.description);
+  formData.append("category", data.category.toString());
+  formData.append("againstCategory", data.againstCategory.toString());
+  data.files.forEach((file: any) => {
+    formData.append("files", file);
+  });
+  const response = await postRequest("/items", formData, true);
   return response.data;
 };
 
@@ -16,16 +29,27 @@ export const getAllItems = async (queries?: any): Promise<AllArticles> => {
   return response.data;
 };
 
-export const getItem = async (slug: string): Promise<Article> => {
+export const getItem = async (slug: string): Promise<ArticleType> => {
   const response = await getRequest(`/items/${slug}`);
   return response.data;
 };
 
 export const updateItem = async (
   id: number,
-  data: CreateArticle
-): Promise<Article> => {
-  const response = await patchRequest(`/items/${id}`, data);
+  data: UpdateArticle
+): Promise<ArticleType> => {
+  const formData = new FormData();
+  formData.append("title", data.title);
+  formData.append("description", data.description);
+  formData.append("category", data.category.toString());
+  formData.append("againstCategory", data.againstCategory.toString());
+  data.files.forEach((file: any) => {
+    formData.append("files", file);
+  });
+  data.filesToDelete.forEach((file: any) => {
+    formData.append("filesToDelete", file);
+  });
+  const response = await patchRequest(`/items/${id}`, formData, true);
   return response.data;
 };
 
