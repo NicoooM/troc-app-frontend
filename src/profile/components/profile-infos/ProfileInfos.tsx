@@ -29,7 +29,7 @@ const ProfileInfos = ({ user, itemsCount }: Props) => {
       <div className={styles.content}>
         <h1 className={styles.username}>{user.username}</h1>
         <p className={styles.articles}>
-          {itemsCount} articles en attentes d’échange
+          {itemsCount} article{itemsCount > 1 && "s"} en attente d’échange
         </p>
         <p className={styles.date}>A rejoint le {date}</p>
       </div>

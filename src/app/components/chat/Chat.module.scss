@@ -1,0 +1,30 @@
+.container {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    z-index: 10;
+    background-color: var(--grey300);
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    padding: 16px;
+    p {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--grey900);
+    }
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: var(--grey900);
+    }
+}
+
+.chat {
+    border-top: 1px solid var(--grey500);
+    height: 200px;
+}

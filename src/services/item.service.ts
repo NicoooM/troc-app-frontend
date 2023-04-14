@@ -17,9 +17,11 @@ export const createItem = async (data: CreateArticle) => {
   formData.append("description", data.description);
   formData.append("category", data.category.toString());
   formData.append("againstCategory", data.againstCategory.toString());
-  data.files.forEach((file: any) => {
-    formData.append("files", file);
-  });
+  if (data.files && data.files.length > 0) {
+    data.files.forEach((file: any) => {
+      formData.append("files", file);
+    });
+  }
   const response = await postRequest("/items", formData, true);
   return response.data;
 };
@@ -43,12 +45,16 @@ export const updateItem = async (
   formData.append("description", data.description);
   formData.append("category", data.category.toString());
   formData.append("againstCategory", data.againstCategory.toString());
-  data.files.forEach((file: any) => {
-    formData.append("files", file);
-  });
-  data.filesToDelete.forEach((file: any) => {
-    formData.append("filesToDelete", file);
-  });
+  if (data.files && data.files.length > 0) {
+    data.files.forEach((file: any) => {
+      formData.append("files", file);
+    });
+  }
+  if (data.filesToDelete && data.filesToDelete.length > 0) {
+    data.filesToDelete.forEach((file: any) => {
+      formData.append("filesToDelete", file);
+    });
+  }
   const response = await patchRequest(`/items/${id}`, formData, true);
   return response.data;
 };
