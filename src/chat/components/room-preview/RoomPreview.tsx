@@ -1,9 +1,9 @@
-import { Room } from "@/src/types/room";
+import { RoomPreviewType } from "@/src/types/room";
 import styles from "./RoomPreview.module.scss";
 import { User } from "phosphor-react";
 
 type Props = {
-  room: Room;
+  room: RoomPreviewType;
   onClick: () => void;
 };
 

@@ -2,7 +2,7 @@ import { CaretDown, CaretUp } from "phosphor-react";
 import styles from "./Chat.module.scss";
 import { useEffect, useState } from "react";
 import { getAllRooms, getOneRoom } from "@/src/services/room.service";
-import { Room } from "@/src/types/room";
+import { Room, RoomPreviewType } from "@/src/types/room";
 import RoomPreview from "@/src/chat/components/room-preview/RoomPreview";
 import RoomView from "@/src/chat/components/room-view/RoomView";
 
@@ -47,7 +47,7 @@ const Chat = () => {
       </button>
       {isOpen && currentOtherUser === null && (
         <ul className={styles.chat}>
-          {rooms.map((room: Room) => (
+          {rooms.map((room: RoomPreviewType) => (
             <li key={room.id}>
               <RoomPreview
                 room={room}
