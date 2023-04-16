@@ -5,18 +5,23 @@ import { getAllRooms, getOneRoom } from "@/src/services/room.service";
 import { Room, RoomPreviewType } from "@/src/types/room";
 import RoomPreview from "@/src/chat/components/room-preview/RoomPreview";
 import RoomView from "@/src/chat/components/room-view/RoomView";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/src/redux/store/store";
 import { io, Socket } from "socket.io-client";
 import { getTokenFromCookie } from "@/src/utils/authorizations";
+import { UserType } from "@/src/types/user";
+import {
+  setModal,
+  setCurrentOtherUser,
+  setRooms,
+} from "@/src/redux/slices/chatSlice";
 let socket: Socket;
 
 const Chat = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.user);
-  const [rooms, setRooms] = useState([]);
-  const [currentRoom, setCurrentRoom] = useState<Room | null>(null);
-  const [currentOtherUser, setCurrentOtherUser] = useState<number | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const chat = useSelector((state: RootState) => state.chat);
+  const { modalOpened, currentOtherUser, rooms } = chat;
 
   const initializeSocket = async () => {
     socket = io(process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000", {
@@ -44,7 +49,7 @@ const Chat = () => {
   useEffect(() => {
     getAllRooms()
       .then((rooms) => {
-        setRooms(rooms);
+        dispatch(setRooms(rooms));
       })
       .catch((error) => {
         console.log(error);
@@ -55,71 +60,57 @@ const Chat = () => {
     socket.on("chat", (data: any) => {
       getAllRooms()
         .then((rooms) => {
-          setRooms(rooms);
+          dispatch(setRooms(rooms));
         })
         .catch((error) => {
           console.log(error);
         });
-      if (currentRoom?.id === data.room && currentOtherUser) {
-        getOneRoom(currentOtherUser).then((room) => {
-          console.log(room);
-          setCurrentRoom(room);
-        });
-      }
     });
-  }, [currentRoom]);
-
-  useEffect(() => {
-    if (currentOtherUser === null) return;
-    getOneRoom(currentOtherUser).then((room) => {
-      setCurrentRoom(room);
-    });
-  }, [currentOtherUser]);
+  }, []);
 
   const handleModal = () => {
-    setIsOpen(!isOpen);
+    dispatch(setModal(!modalOpened));
   };
 
-  const openRoom = (currentOtherUser: number) => {
-    setCurrentOtherUser(currentOtherUser);
+  const openRoom = (currentOtherUser: UserType) => {
+    dispatch(setCurrentOtherUser(currentOtherUser));
   };
 
   const backToPreview = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentOtherUser(null);
-    setCurrentRoom(null);
+    dispatch(setCurrentOtherUser(null));
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.button} onClick={handleModal}>
-        {isOpen && currentRoom && (
+        {modalOpened && currentOtherUser && (
           <button onClick={backToPreview}>
             <ArrowLeft />
           </button>
         )}
-        <p>{currentRoom ? currentRoom.otherUser.username : "Messagerie"}</p>
+        <p>{currentOtherUser ? currentOtherUser.username : "Messagerie"}</p>
         <button onClick={handleModal}>
           <span className="sr-only">
-            {isOpen ? "Ouvrir" : "Fermer"} la messagerie
+            {modalOpened ? "Ouvrir" : "Fermer"} la messagerie
           </span>
-          {isOpen ? <CaretDown /> : <CaretUp />}
+          {modalOpened ? <CaretDown /> : <CaretUp />}
         </button>
       </div>
-      {isOpen && currentOtherUser === null && (
+      {modalOpened && currentOtherUser === null && (
         <ul className={styles.chat}>
           {rooms.map((room: RoomPreviewType) => (
             <li key={room.id}>
               <RoomPreview
                 room={room}
-                onClick={() => openRoom(room.otherUser.id)}
+                onClick={() => openRoom(room.otherUser)}
               />
             </li>
           ))}
         </ul>
       )}
-      {isOpen && currentOtherUser !== null && currentRoom && (
-        <RoomView socket={socket} currentRoom={currentRoom} />
+      {modalOpened && currentOtherUser !== null && (
+        <RoomView socket={socket} currentOtherUser={currentOtherUser} />
       )}
     </div>
   );

@@ -16,6 +16,7 @@ import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import useDebounce from "@/src/hooks/useDebounce";
 import ArticleOptions from "@/src/article/components/article-options/ArticleOptions";
 import { toast } from "react-toastify";
+import { clearChat } from "@/src/redux/slices/chatSlice";
 
 const MyAccount = () => {
   const LIMIT = 12;
@@ -130,6 +131,7 @@ const MyAccount = () => {
 
   const logout = () => {
     dispatch(clearUser());
+    dispatch(clearChat());
     removeAuthorization();
     toast.success("Vous êtes déconnecté");
     router.push("/");

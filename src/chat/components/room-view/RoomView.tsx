@@ -4,14 +4,23 @@ import { PaperPlaneTilt, User } from "phosphor-react";
 import Message from "../message/Message";
 import { useEffect, useRef, useState } from "react";
 import { Socket } from "socket.io-client";
+import { getOneRoom } from "@/src/services/room.service";
+import { UserType } from "@/src/types/user";
+import { RootState } from "@/src/redux/store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setNewChat } from "@/src/redux/slices/chatSlice";
 
 type Props = {
-  currentRoom: Room;
+  currentOtherUser: UserType;
   socket: Socket;
 };
 
-const RoomView = ({ currentRoom, socket }: Props) => {
+const RoomView = ({ currentOtherUser, socket }: Props) => {
+  const dispatch = useDispatch();
+  const chat = useSelector((state: RootState) => state.chat);
+  const { newChat, rooms } = chat;
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
+  const [currentRoom, setCurrentRoom] = useState<Room | null>(null);
   const [messageValue, setMessageValue] = useState("");
 
   const scrollToBottom = () => {
@@ -22,12 +31,49 @@ const RoomView = ({ currentRoom, socket }: Props) => {
     scrollToBottom();
   }, [currentRoom]);
 
+  useEffect(() => {
+    const findRoom = rooms.find(
+      (room) => room.otherUser.id === currentOtherUser.id
+    );
+    if (newChat && !findRoom) return;
+    getOneRoom(currentOtherUser.id)
+      .then((room) => {
+        setCurrentRoom(room);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    socket.on("chat", (data: any) => {
+      console.log(data);
+      if (currentOtherUser.id === data.sender.id) {
+        getOneRoom(currentOtherUser.id).then((room) => {
+          setCurrentRoom(room);
+        });
+      } else {
+        if (currentRoom && currentRoom.id === data.room) {
+          setCurrentRoom({
+            ...currentRoom,
+            messages: [...currentRoom.messages, data],
+          } as Room);
+        } else {
+          getOneRoom(currentOtherUser.id).then((room) => {
+            setCurrentRoom(room);
+          });
+        }
+      }
+    });
+  }, [currentRoom]);
+
   const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     socket.emit("chat", {
       content: messageValue,
-      receiver: currentRoom.otherUser.id,
+      receiver: currentOtherUser.id,
     });
+    if (newChat) dispatch(setNewChat(false));
     setMessageValue("");
   };
 
@@ -35,7 +81,7 @@ const RoomView = ({ currentRoom, socket }: Props) => {
     <>
       <div className={styles.container}>
         <ul className={styles.messages}>
-          {currentRoom.messages.map((message) => (
+          {currentRoom?.messages.map((message) => (
             <li key={message.id}>
               <Message message={message} />
             </li>

@@ -12,6 +12,7 @@ import { removeAuthorization } from "@/src/utils/authorizations";
 import { useRouter } from "next/router";
 import Search from "../search/Search";
 import { toast } from "react-toastify";
+import { clearChat } from "@/src/redux/slices/chatSlice";
 
 const Header = () => {
   const router = useRouter();
@@ -20,6 +21,7 @@ const Header = () => {
 
   const logout = () => {
     dispatch(clearUser());
+    dispatch(clearChat());
     removeAuthorization();
     toast.success("Vous êtes déconnecté");
     router.push("/");
