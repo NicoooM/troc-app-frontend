@@ -1,14 +1,14 @@
-import { Message } from "./message";
+import { MessageType } from "./message";
 import { UserType } from "./user";
 
 export type RoomPreviewType = {
   id: number;
-  latestMessage: Message;
+  latestMessage: MessageType;
   otherUser: UserType;
 };
 
 export type Room = {
   id: number;
-  messages: Message[];
+  messages: MessageType[];
   otherUser: UserType;
 };
