@@ -8,6 +8,7 @@ import { readableDate } from "@/src/utils/formatDate";
 import Link from "next/link";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import { User } from "phosphor-react";
+import MessageButtonSingle from "@/src/chat/components/message-button-single/MessageButtonSingle";
 
 type Props = {
   article: ArticleType;
@@ -53,6 +54,7 @@ const SingleArticle = ({ article, userArticles, categoryArticles }: Props) => {
                     <p className={styles.seeUser}>voir le profil</p>
                   </div>
                 </Link>
+                <MessageButtonSingle otherUser={article.user} />
               </div>
             </div>
           </div>

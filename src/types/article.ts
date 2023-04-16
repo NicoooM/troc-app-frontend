@@ -1,4 +1,5 @@
 import { Category } from "./category";
+import { UserType } from "./user";
 
 export type CreateArticle = {
   title: string;
@@ -16,7 +17,7 @@ export type ArticleType = {
   isAvailable: boolean;
   category: Category;
   againstCategory: Category;
-  user: any;
+  user: UserType;
   slug: string;
   files: any[];
 };
