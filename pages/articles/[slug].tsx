@@ -107,11 +107,13 @@ export async function getServerSideProps(context: any) {
   const userArticlesQuery = {
     userId: userId,
     limit: LIMIT,
+    exclude: article.id,
   };
 
   const categoryArticlesQuery = {
     category: category,
     limit: LIMIT,
+    exclude: article.id,
   };
 
   const userArticles = await getAllItems(userArticlesQuery);

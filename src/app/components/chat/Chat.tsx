@@ -7,44 +7,18 @@ import RoomPreview from "@/src/chat/components/room-preview/RoomPreview";
 import RoomView from "@/src/chat/components/room-view/RoomView";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/src/redux/store/store";
-import { io, Socket } from "socket.io-client";
-import { getTokenFromCookie } from "@/src/utils/authorizations";
 import { UserType } from "@/src/types/user";
+import socket from "@/src/utils/socket";
 import {
   setModal,
   setCurrentOtherUser,
   setRooms,
 } from "@/src/redux/slices/chatSlice";
-let socket: Socket;
 
 const Chat = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.user.user);
   const chat = useSelector((state: RootState) => state.chat);
   const { modalOpened, currentOtherUser, rooms } = chat;
-
-  const initializeSocket = async () => {
-    socket = io(process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000", {
-      extraHeaders: {
-        token: getTokenFromCookie(),
-      },
-    });
-
-    socket.on("connect", () => {
-      console.log("connected");
-    });
-
-    socket.on("disconnect", () => {
-      console.log("disconnected");
-    });
-  };
-
-  useEffect(() => {
-    initializeSocket();
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     getAllRooms()
