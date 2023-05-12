@@ -1,10 +1,15 @@
 .m-button {
-    padding: 12px 16px;
-    font-size: 16px;
-    line-height: 20px;
     display: flex;
     position: relative;
     width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 12px;
+    @media screen and (min-width: 768px) {
+        padding: 12px 16px;
+        font-size: 16px;
+        line-height: 20px;
+    }
     &--green {
         font-weight: 600;
         background-color: var(--green);

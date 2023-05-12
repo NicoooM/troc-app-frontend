@@ -28,6 +28,8 @@ const MessageButtonSingle = ({ otherUser }: Props) => {
     dispatch(setModal(true));
   };
 
+  if (user.id === otherUser.id) return null;
+
   return (
     <button className="m-button m-button--green" onClick={sendMessage}>
       Envoyer un message
