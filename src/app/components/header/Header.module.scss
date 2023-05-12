@@ -1,12 +1,36 @@
 .wrapper {
-    box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.25);
-    padding: 18px 0;
-    margin-bottom: 42px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #fff;
+    margin-bottom: 100px;
+    @media screen and (min-width: 768px) {
+        padding: 18px 0;
+        margin-bottom: 42px;
+        box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.25);
+    }
+}
+
+.logo {
+    margin-right: auto;
+    @media screen and (min-width: 768px) {
+        margin-right: 0;
+    }
+    svg {
+        width: 100px;
+        @media screen and (min-width: 400px) {
+            width: 131px;
+        }
+    }
 }
 
 .nav {
     display: flex;
     align-items: center;
+    @media screen and (min-width: 768px) {
+        justify-content: flex-start;
+    }
 }
 
 .user {
@@ -38,7 +62,12 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin-left: 36px;
+    padding: 10px;
+    margin-left: 12px;
+    @media screen and (min-width: 768px) {
+        margin-left: 36px;
+        padding: 0;
+    }
     svg {
         width: 22px;
         height: 22px;
@@ -51,6 +80,10 @@
     font-weight: 500;
     line-height: 20px;
     margin-left: 12px;
+    display: none;
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
 }
 
 .accountName {
@@ -71,6 +104,23 @@
         display: flex;
         &:hover {
             background-color: var(--grey200);
+        }
+    }
+}
+
+.button {
+    p {
+        display: none;
+        @media screen and (min-width: 768px) {
+            display: block;
+        }
+    }
+    svg {
+        width: 18px;
+        height: 18px;
+        color: #fff;
+        @media screen and (min-width: 768px) {
+            display: none;
         }
     }
 }

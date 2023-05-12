@@ -1,14 +1,15 @@
 import Layout from "@/src/app/components/layout/Layout";
 import ArticleSlider from "@/src/article/components/article-slider/ArticleSlider";
 import { getAllItems, getItem } from "@/src/services/item.service";
-import { AllArticles, ArticleType } from "@/src/types/article";
+import { ArticleType } from "@/src/types/article";
 import styles from "@/styles/pages/Single.module.scss";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { readableDate } from "@/src/utils/formatDate";
 import Link from "next/link";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import { User } from "phosphor-react";
 import MessageButtonSingle from "@/src/chat/components/message-button-single/MessageButtonSingle";
+import EditButtonSingle from "@/src/article/components/edit-button-single/EditButtonSingle";
 
 type Props = {
   article: ArticleType;
@@ -55,39 +56,47 @@ const SingleArticle = ({ article, userArticles, categoryArticles }: Props) => {
                   </div>
                 </Link>
                 <MessageButtonSingle otherUser={article.user} />
+                <EditButtonSingle
+                  slug={article.slug}
+                  ownerId={article.user.id}
+                />
               </div>
             </div>
           </div>
           <h2 className={styles.subtitle}>Détails de l'offre</h2>
           <p className={styles.description}>{article.description}</p>
-          <div className={styles.others}>
-            <h2 className={styles.subtitle}>
-              Autres articles de {article.user.username}
-            </h2>
-            <ul className="m-grid">
-              {userArticles &&
-                userArticles.map((article: ArticleType) => (
-                  <li className="m-grid__item" key={article.slug}>
-                    <Link href={`/articles/${article.slug}`}>
-                      <ArticleCard article={article} />
-                    </Link>
-                  </li>
-                ))}
-            </ul>
-          </div>
-          <div className={styles.others}>
-            <h2 className={styles.subtitle}>Dans la même catégorie</h2>
-            <ul className="m-grid">
-              {categoryArticles &&
-                categoryArticles.map((article: ArticleType) => (
-                  <li className="m-grid__item" key={article.slug}>
-                    <Link href={`/articles/${article.slug}`}>
-                      <ArticleCard article={article} />
-                    </Link>
-                  </li>
-                ))}
-            </ul>
-          </div>
+          {userArticles.length > 0 && (
+            <div className={styles.others}>
+              <h2 className={styles.subtitle}>
+                Autres articles de {article.user.username}
+              </h2>
+              <ul className="m-grid">
+                {userArticles &&
+                  userArticles.map((article: ArticleType) => (
+                    <li className="m-grid__item" key={article.slug}>
+                      <Link href={`/articles/${article.slug}`}>
+                        <ArticleCard article={article} />
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          )}
+          {categoryArticles.length > 0 && (
+            <div className={styles.others}>
+              <h2 className={styles.subtitle}>Dans la même catégorie</h2>
+              <ul className="m-grid">
+                {categoryArticles &&
+                  categoryArticles.map((article: ArticleType) => (
+                    <li className="m-grid__item" key={article.slug}>
+                      <Link href={`/articles/${article.slug}`}>
+                        <ArticleCard article={article} />
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </Layout>
