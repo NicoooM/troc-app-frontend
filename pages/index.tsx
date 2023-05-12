@@ -15,36 +15,36 @@ const Home = ({ latestItems }: Props) => {
   return (
     <ProfileLayout>
       <Layout>
-        <div className="container">
-          <div className={styles.headWrapper}>
-            <div className={styles.image}>
-              <Image
-                src="https://images.unsplash.com/photo-1677629828024-7793ff7d9403?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60"
-                fill
-                alt=""
-              />
-            </div>
-            <div className={styles.intro}>
-              <h1 className={styles.introTitle}>
-                Le premier site de troc en France. Echangez dès maintenant les
-                objets que vous ne voulez plus.
-              </h1>
-              <div className={styles.buttons}>
-                <Link
-                  href="/articles"
-                  className="m-button m-button--green m-button--fit-content"
-                >
-                  Voir les offres
-                </Link>
-                <Link
-                  href="/articles/creer-un-article"
-                  className="m-button m-button--secondary m-button--fit-content"
-                >
-                  Déposer une annonce
-                </Link>
-              </div>
+        <div className={styles.headWrapper}>
+          <div className={styles.image}>
+            <Image
+              src="https://images.unsplash.com/photo-1677629828024-7793ff7d9403?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60"
+              fill
+              alt=""
+            />
+          </div>
+          <div className={styles.intro}>
+            <h1 className={styles.introTitle}>
+              Le premier site de troc en France. Echangez dès maintenant les
+              objets que vous ne voulez plus.
+            </h1>
+            <div className={styles.buttons}>
+              <Link
+                href="/articles"
+                className="m-button m-button--green m-button--fit-content"
+              >
+                Voir les offres
+              </Link>
+              <Link
+                href="/articles/creer-un-article"
+                className="m-button m-button--secondary m-button--fit-content"
+              >
+                Déposer une annonce
+              </Link>
             </div>
           </div>
+        </div>
+        <div className="container">
           {latestItems && (
             <div className={styles.articles}>
               <div className={styles.articlesHead}>
