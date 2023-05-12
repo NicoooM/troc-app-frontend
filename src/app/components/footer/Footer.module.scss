@@ -1,6 +1,9 @@
 .wrapper {
     background-color: var(--grey200);
-    padding: 30px 0;
+    padding: 30px 0 40px 0;
+    @media screen and (min-width: 768px) {
+        padding: 30px 0;
+    }
 }
 
 .title {
@@ -20,5 +23,11 @@
     color: var(--black);
     &:not(:last-child) {
         margin-bottom: 12px;
+    }
+}
+
+.logo {
+    svg {
+        width: 131px;
     }
 }

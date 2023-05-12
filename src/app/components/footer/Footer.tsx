@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className={styles.wrapper}>
       <div className="container">
         <div className="m-grid">
-          <div className="m-grid__item">
+          <div className={`m-grid__item ${styles.logo}`}>
             <LogoIcon />
             <p className={styles.link}>© 2023 TradeHub</p>
           </div>
