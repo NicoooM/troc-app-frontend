@@ -26,41 +26,39 @@ export default function ForgotPasswordPage() {
 
   return (
     <Layout>
-      <main className="container">
-        <div className={styles.wrapper}>
-          <div className={styles.image}>
-            <Image src="/images/register.jpg" fill alt="" />
-          </div>
-          <div className={styles.form}>
-            <h1 className={styles.title}>Mot de passe oublié</h1>
-            <form onSubmit={handleSubmit}>
-              <div className={styles.formInput}>
-                <label htmlFor="email" className="m-label">
-                  Adresse mail
-                </label>
-                <div className="m-input">
-                  <input
-                    id="email"
-                    type="email"
-                    placeholder="Adresse mail"
-                    onChange={handleChange}
-                    name="email"
-                    value={email}
-                    required
-                  />
-                </div>
+      <main className={styles.wrapper}>
+        <div className={styles.image}>
+          <Image src="/images/register.jpg" fill alt="" />
+        </div>
+        <div className={styles.form}>
+          <h1 className={styles.title}>Mot de passe oublié</h1>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.formInput}>
+              <label htmlFor="email" className="m-label">
+                Adresse mail
+              </label>
+              <div className="m-input">
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Adresse mail"
+                  onChange={handleChange}
+                  name="email"
+                  value={email}
+                  required
+                />
               </div>
-              <button
-                className="m-button m-button--green m-button--fit-content"
-                type="submit"
-              >
-                Continuer
-              </button>
-              <p className={styles.forgot}>
-                <Link href={"/compte/connexion"}>Annuler</Link>
-              </p>
-            </form>
-          </div>
+            </div>
+            <button
+              className="m-button m-button--green m-button--fit-content"
+              type="submit"
+            >
+              Continuer
+            </button>
+            <p className={styles.forgot}>
+              <Link href={"/compte/connexion"}>Annuler</Link>
+            </p>
+          </form>
         </div>
       </main>
     </Layout>

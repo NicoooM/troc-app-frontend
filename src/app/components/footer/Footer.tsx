@@ -37,7 +37,9 @@ const Footer = () => {
           </div>
           <div className="m-grid__item">
             <p className={styles.title}>Juridique</p>
-            <p className={styles.link}>© 2023 TradeHub</p>
+            <Link href="/mentions-legales" className={styles.link}>
+              Mentions légales
+            </Link>
           </div>
         </div>
       </div>
