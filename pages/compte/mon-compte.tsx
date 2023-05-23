@@ -49,6 +49,7 @@ const MyAccount = () => {
   };
 
   useEffect(() => {
+    if (!user.id) return;
     const query: any = {
       limit: LIMIT,
       userId: user.id,
