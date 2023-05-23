@@ -1,0 +1,35 @@
+.text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    margin-bottom: 36px;
+}
+
+.title {
+    margin-bottom: 36px;
+    font-size: 24px;
+    line-height: 28px;
+    @media screen and (min-width: 768px) {
+        font-size: 36px;
+        line-height: 42px;
+    }
+}
+
+.subtitle {
+    margin-top: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-size: 20px;
+    line-height: 23px;
+    @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 28px;
+    }
+}
+
+.wrapper {
+    padding: 24px 0;
+    @media screen and (min-width: 768px) {
+        padding: 48px 0;
+    }
+}
