@@ -1,6 +1,6 @@
-import { register } from "@/src/services/auth.service";
+import { register } from "@/src/app/services/auth.service";
 import { useState } from "react";
-import { RegisterUser } from "@/src/types/user";
+import { RegisterUser } from "@/src/app/types/user";
 import { useRouter } from "next/navigation";
 import Layout from "@/src/app/components/layout/Layout";
 import styles from "@/styles/pages/Account.module.scss";

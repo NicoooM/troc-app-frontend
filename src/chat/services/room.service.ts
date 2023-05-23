@@ -1,4 +1,4 @@
-import { getRequest } from "../utils/useApi";
+import { getRequest } from "../../app/utils/useApi";
 
 export const getAllRooms = async (): Promise<any> => {
   const response = await getRequest("/rooms");

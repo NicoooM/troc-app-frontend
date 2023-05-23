@@ -1,14 +1,14 @@
 import { ChatDots } from "phosphor-react";
 import styles from "./MessageButtonSingle.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/src/redux/store/store";
+import { RootState } from "@/src/app/redux/store/store";
 import { useRouter } from "next/router";
-import { UserType } from "@/src/types/user";
+import { UserType } from "@/src/app/types/user";
 import {
   setModal,
   setCurrentOtherUser,
   setNewChat,
-} from "@/src/redux/slices/chatSlice";
+} from "@/src/app/redux/slices/chatSlice";
 
 type Props = {
   otherUser: UserType;

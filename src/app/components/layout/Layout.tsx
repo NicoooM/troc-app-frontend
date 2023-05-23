@@ -3,7 +3,7 @@ import Footer from "../footer/Footer";
 import Header from "../header/Header";
 
 import { useSelector } from "react-redux";
-import { RootState } from "@/src/redux/store/store";
+import { RootState } from "@/src/app/redux/store/store";
 
 const Chat = dynamic(() => import("../chat/Chat"), { ssr: false });
 

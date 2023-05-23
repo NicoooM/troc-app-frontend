@@ -1,7 +1,7 @@
-import { login } from "@/src/services/auth.service";
+import { login } from "@/src/app/services/auth.service";
 import { useState } from "react";
-import { LoginUser } from "@/src/types/user";
-import { setTokenCookie } from "@/src/utils/authorizations";
+import { LoginUser } from "@/src/app/types/user";
+import { setTokenCookie } from "@/src/app/utils/authorizations";
 import { useRouter } from "next/navigation";
 import Layout from "@/src/app/components/layout/Layout";
 import styles from "@/styles/pages/Account.module.scss";

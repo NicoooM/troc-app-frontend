@@ -3,16 +3,16 @@ import LogoIcon from "@/src/app/icons/LogoIcon";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { useMemo } from "react";
-import { clearUser } from "@/src/redux/slices/userSlice";
+import { clearUser } from "@/src/app/redux/slices/userSlice";
 import styles from "./Header.module.scss";
 import { CaretDown, Plus, User } from "phosphor-react";
 import Dropdown from "../dropdown/Dropdown";
-import { RootState } from "@/src/redux/store/store";
-import { removeAuthorization } from "@/src/utils/authorizations";
+import { RootState } from "@/src/app/redux/store/store";
+import { removeAuthorization } from "@/src/app/utils/authorizations";
 import { useRouter } from "next/router";
 import Search from "../search/Search";
 import { toast } from "react-toastify";
-import { clearChat } from "@/src/redux/slices/chatSlice";
+import { clearChat } from "@/src/app/redux/slices/chatSlice";
 
 const Header = () => {
   const router = useRouter();

@@ -1,4 +1,4 @@
-import { forgotPassword } from "@/src/services/auth.service";
+import { forgotPassword } from "@/src/app/services/auth.service";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Layout from "@/src/app/components/layout/Layout";

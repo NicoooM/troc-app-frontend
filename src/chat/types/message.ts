@@ -1,4 +1,4 @@
-import { UserType } from "./user";
+import { UserType } from "../../app/types/user";
 
 export type CreateMessage = {
   content: string;

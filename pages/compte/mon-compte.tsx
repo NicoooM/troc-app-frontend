@@ -1,22 +1,22 @@
 import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout";
 import Layout from "@/src/app/components/layout/Layout";
 import ProfileInfos from "@/src/profile/components/profile-infos/ProfileInfos";
-import { RootState } from "@/src/redux/store/store";
+import { RootState } from "@/src/app/redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "@/styles/pages/Profile.module.scss";
 import Link from "next/link";
 import { MagnifyingGlass, PencilSimple, Plus, SignOut } from "phosphor-react";
-import { removeAuthorization } from "@/src/utils/authorizations";
-import { clearUser } from "@/src/redux/slices/userSlice";
+import { removeAuthorization } from "@/src/app/utils/authorizations";
+import { clearUser } from "@/src/app/redux/slices/userSlice";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
-import { AllArticles, ArticleType } from "@/src/types/article";
-import { getAllItems } from "@/src/services/item.service";
+import { AllArticles, ArticleType } from "@/src/article/types/article";
+import { getAllItems } from "@/src/article/services/item.service";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
-import useDebounce from "@/src/hooks/useDebounce";
+import useDebounce from "@/src/app/hooks/useDebounce";
 import ArticleOptions from "@/src/article/components/article-options/ArticleOptions";
 import { toast } from "react-toastify";
-import { clearChat } from "@/src/redux/slices/chatSlice";
+import { clearChat } from "@/src/app/redux/slices/chatSlice";
 
 const MyAccount = () => {
   const LIMIT = 12;

@@ -2,12 +2,12 @@ import Layout from "@/src/app/components/layout/Layout";
 import ProfileInfos from "@/src/profile/components/profile-infos/ProfileInfos";
 import { MagnifyingGlass } from "phosphor-react";
 import styles from "@/styles/pages/Profile.module.scss";
-import { UserType } from "@/src/types/user";
-import { getUser } from "@/src/services/user.service";
-import { AllArticles, ArticleType } from "@/src/types/article";
-import { getAllItems } from "@/src/services/item.service";
+import { UserType } from "@/src/app/types/user";
+import { getUser } from "@/src/app/services/user.service";
+import { AllArticles, ArticleType } from "@/src/article/types/article";
+import { getAllItems } from "@/src/article/services/item.service";
 import { useEffect, useMemo, useState } from "react";
-import useDebounce from "@/src/hooks/useDebounce";
+import useDebounce from "@/src/app/hooks/useDebounce";
 import Link from "next/link";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 

@@ -1,4 +1,4 @@
-import { CreateArticle } from "@/src/types/article";
+import { CreateArticle } from "@/src/article/types/article";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import DefaultFilePreview from "../default-file-preview/DefaultFilePreview";

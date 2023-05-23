@@ -1,4 +1,4 @@
-import { CreateArticle } from "@/src/types/article";
+import { CreateArticle } from "@/src/article/types/article";
 import Image from "next/image";
 import { Trash } from "phosphor-react";
 import styles from "./FilePreview.module.scss";

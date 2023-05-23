@@ -1,7 +1,11 @@
-import { getAllCategories } from "@/src/services/category.service";
-import { createItem, updateItem } from "@/src/services/item.service";
-import { ArticleType, CreateArticle, UpdateArticle } from "@/src/types/article";
-import { Category } from "@/src/types/category";
+import { getAllCategories } from "@/src/app/services/category.service";
+import { createItem, updateItem } from "@/src/article/services/item.service";
+import {
+  ArticleType,
+  CreateArticle,
+  UpdateArticle,
+} from "@/src/article/types/article";
+import { Category } from "@/src/app/types/category";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { CaretDown } from "phosphor-react";
