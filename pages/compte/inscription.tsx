@@ -42,90 +42,84 @@ export default function InscriptionPage() {
 
   return (
     <Layout>
-      <main className="container">
-        <div className={styles.wrapper}>
-          <div className={styles.image}>
-            <Image
-              src="https://images.unsplash.com/photo-1677629828024-7793ff7d9403?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60"
-              fill
-              alt=""
-            />
-          </div>
-          <div className={styles.form}>
-            <h1 className={styles.title}>Créer un compte</h1>
-            <form onSubmit={handleSubmit}>
-              <div className={styles.formInput}>
-                <label htmlFor="" className="m-label">
-                  Nom utilisateur
-                </label>
-                <div className="m-input">
-                  <input
-                    type="text"
-                    placeholder="Nom utilisateur"
-                    onChange={handleChange}
-                    name="username"
-                    value={user.username}
-                    required
-                  />
-                </div>
+      <main className={styles.wrapper}>
+        <div className={styles.image}>
+          <Image src="/images/register.jpg" fill alt="" />
+        </div>
+        <div className={styles.form}>
+          <h1 className={styles.title}>Créer un compte</h1>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.formInput}>
+              <label htmlFor="" className="m-label">
+                Nom utilisateur
+              </label>
+              <div className="m-input">
+                <input
+                  type="text"
+                  placeholder="Nom utilisateur"
+                  onChange={handleChange}
+                  name="username"
+                  value={user.username}
+                  required
+                />
               </div>
-              <div className={styles.formInput}>
-                <label htmlFor="" className="m-label">
-                  Adresse mail
-                </label>
-                <div className="m-input">
-                  <input
-                    type="email"
-                    placeholder="Adresse mail"
-                    onChange={handleChange}
-                    name="email"
-                    value={user.email}
-                    required
-                  />
-                </div>
+            </div>
+            <div className={styles.formInput}>
+              <label htmlFor="" className="m-label">
+                Adresse mail
+              </label>
+              <div className="m-input">
+                <input
+                  type="email"
+                  placeholder="Adresse mail"
+                  onChange={handleChange}
+                  name="email"
+                  value={user.email}
+                  required
+                />
               </div>
-              <div className={styles.formInput}>
-                <label htmlFor="" className="m-label">
-                  Mot de passe
-                </label>
-                <div className="m-input">
-                  <input
-                    type="password"
-                    placeholder="Mot de passe"
-                    onChange={handleChange}
-                    name="password"
-                    value={user.password}
-                    required
-                  />
-                </div>
+            </div>
+            <div className={styles.formInput}>
+              <label htmlFor="" className="m-label">
+                Mot de passe
+              </label>
+              <div className="m-input">
+                <input
+                  type="password"
+                  placeholder="Mot de passe"
+                  onChange={handleChange}
+                  name="password"
+                  value={user.password}
+                  required
+                />
               </div>
-              <div className={styles.formInput}>
-                <label htmlFor="" className="m-label">
-                  Confirmer le mot de passe
-                </label>
-                <div className="m-input">
-                  <input
-                    type="password"
-                    placeholder="Confirmer le mot de passe"
-                    onChange={handlePasswordConfirmChange}
-                    name="passwordConfirm"
-                    value={passwordConfirm}
-                    required
-                  />
-                </div>
+            </div>
+            <div className={styles.formInput}>
+              <label htmlFor="" className="m-label">
+                Confirmer le mot de passe
+              </label>
+              <div className="m-input">
+                <input
+                  type="password"
+                  placeholder="Confirmer le mot de passe"
+                  onChange={handlePasswordConfirmChange}
+                  name="passwordConfirm"
+                  value={passwordConfirm}
+                  required
+                />
               </div>
-              <button
-                className="m-button m-button--green m-button--fit-content"
-                type="submit"
-              >
-                Continuer
-              </button>
-            </form>
-            <p className={styles.register}>
-              Déjà un compte ?{" "}
-              <Link href={"/compte/connexion"}>Se connecter</Link>
-            </p>
-          </div>
+            </div>
+            <button
+              className="m-button m-button--green m-button--fit-content"
+              type="submit"
+            >
+              Continuer
+            </button>
+          </form>
+          <p className={styles.register}>
+            Déjà un compte ?{" "}
+            <Link href={"/compte/connexion"}>Se connecter</Link>
+          </p>
         </div>
       </main>
     </Layout>

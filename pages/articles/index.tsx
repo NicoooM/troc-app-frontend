@@ -98,80 +98,82 @@ const AllArticles = ({
 
   return (
     <Layout>
-      <div className="container">
-        <h1 className={styles.title}>Tous les articles</h1>
-        <div className={styles.filters}>
-          <div className="m-input">
-            <MagnifyingGlass />
-            <input
-              type="text"
-              name="search"
-              placeholder="Rechercher un article"
-              value={filters.search}
-              onChange={handleChangeFilters}
-            />
-          </div>
-          <h2 className={styles.subtitle}>Filtres</h2>
-          <div className={styles.selects}>
-            <div className={styles.select}>
-              <label className="m-label" htmlFor="category">
-                Catégorie :
-              </label>
-              <div className="m-select">
-                <select
-                  id="category"
-                  name="category"
-                  value={filters.category}
-                  onChange={handleChangeFilters}
-                >
-                  <option value="">Toutes les catégories</option>
-                  {categories &&
-                    categories.map((category) => (
-                      <option key={category.id} value={category.id}>
-                        {category.title}
-                      </option>
-                    ))}
-                </select>
-                <CaretDown />
+      <div className={styles.wrapper}>
+        <div className="container">
+          <h1 className={styles.title}>Tous les articles</h1>
+          <div className={styles.filters}>
+            <div className="m-input">
+              <MagnifyingGlass />
+              <input
+                type="text"
+                name="search"
+                placeholder="Rechercher un article"
+                value={filters.search}
+                onChange={handleChangeFilters}
+              />
+            </div>
+            <h2 className={styles.subtitle}>Filtres</h2>
+            <div className={styles.selects}>
+              <div className={styles.select}>
+                <label className="m-label" htmlFor="category">
+                  Catégorie :
+                </label>
+                <div className="m-select">
+                  <select
+                    id="category"
+                    name="category"
+                    value={filters.category}
+                    onChange={handleChangeFilters}
+                  >
+                    <option value="">Toutes les catégories</option>
+                    {categories &&
+                      categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                          {category.title}
+                        </option>
+                      ))}
+                  </select>
+                  <CaretDown />
+                </div>
+              </div>
+              <div className={styles.select}>
+                <label className="m-label" htmlFor="againstCategory">
+                  En échange de :
+                </label>
+                <div className="m-select">
+                  <select
+                    id="againstCategory"
+                    name="againstCategory"
+                    value={filters.againstCategory}
+                    onChange={handleChangeFilters}
+                  >
+                    <option value="">Toutes les catégories</option>
+                    {categories &&
+                      categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                          {category.title}
+                        </option>
+                      ))}
+                  </select>
+                  <CaretDown />
+                </div>
               </div>
             </div>
-            <div className={styles.select}>
-              <label className="m-label" htmlFor="againstCategory">
-                En échange de :
-              </label>
-              <div className="m-select">
-                <select
-                  id="againstCategory"
-                  name="againstCategory"
-                  value={filters.againstCategory}
-                  onChange={handleChangeFilters}
-                >
-                  <option value="">Toutes les catégories</option>
-                  {categories &&
-                    categories.map((category) => (
-                      <option key={category.id} value={category.id}>
-                        {category.title}
-                      </option>
-                    ))}
-                </select>
-                <CaretDown />
-              </div>
-            </div>
           </div>
+          <p className={styles.total}>
+            {total} résultat{total > 1 && "s"} de recherche
+          </p>
+          <ul className="m-grid">
+            {articles &&
+              articles.map((article: ArticleType) => (
+                <li className="m-grid__item" key={article.slug}>
+                  <Link href={`/articles/${article.slug}`}>
+                    <ArticleCard article={article} />
+                  </Link>
+                </li>
+              ))}
+          </ul>
         </div>
-        <p className={styles.total}>
-          {total} résultat{total > 1 && "s"} de recherche
-        </p>
-        <ul className="m-grid">
-          {articles &&
-            articles.map((article: ArticleType) => (
-              <li className="m-grid__item" key={article.slug}>
-                <Link href={`/articles/${article.slug}`}>
-                  <ArticleCard article={article} />
-                </Link>
-              </li>
-            ))}
-        </ul>
       </div>
     </Layout>
   );

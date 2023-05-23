@@ -1,5 +1,11 @@
 .wrapper {
-    padding: 60px 200px 120px 200px;
+    padding: 45px 0;
+    @media screen and (min-width: 768px) {
+        padding: 30px 100px 60px 100px;
+    }
+    @media screen and (min-width: 1024px) {
+        padding: 60px 200px 120px 200px;
+    }
     :global(.m-button--green) {
         margin-top: 36px;
         margin-left: auto;

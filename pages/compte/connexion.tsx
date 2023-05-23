@@ -34,67 +34,61 @@ export default function ConnexionPage() {
 
   return (
     <Layout>
-      <main className="container">
-        <div className={styles.wrapper}>
-          <div className={styles.image}>
-            <Image
-              src="https://images.unsplash.com/photo-1677629828024-7793ff7d9403?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60"
-              fill
-              alt=""
-            />
-          </div>
-          <div className={styles.form}>
-            <h1 className={styles.title}>Se connecter</h1>
-            <form onSubmit={handleSubmit}>
-              <div className={styles.formInput}>
-                <label htmlFor="email" className="m-label">
-                  Adresse mail
-                </label>
-                <div className="m-input">
-                  <input
-                    id="email"
-                    type="email"
-                    placeholder="Adresse mail"
-                    onChange={handleChange}
-                    name="email"
-                    value={user.email}
-                    required
-                  />
-                </div>
+      <main className={styles.wrapper}>
+        <div className={styles.image}>
+          <Image src="/images/login.jpg" fill alt="" />
+        </div>
+        <div className={styles.form}>
+          <h1 className={styles.title}>Se connecter</h1>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.formInput}>
+              <label htmlFor="email" className="m-label">
+                Adresse mail
+              </label>
+              <div className="m-input">
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Adresse mail"
+                  onChange={handleChange}
+                  name="email"
+                  value={user.email}
+                  required
+                />
               </div>
-              <div className={styles.formInput}>
-                <label htmlFor="password" className="m-label">
-                  Mot de passe
-                </label>
-                <div className="m-input">
-                  <input
-                    id="password"
-                    type="password"
-                    placeholder="Mot de passe"
-                    onChange={handleChange}
-                    name="password"
-                    value={user.password}
-                    required
-                  />
-                </div>
+            </div>
+            <div className={styles.formInput}>
+              <label htmlFor="password" className="m-label">
+                Mot de passe
+              </label>
+              <div className="m-input">
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Mot de passe"
+                  onChange={handleChange}
+                  name="password"
+                  value={user.password}
+                  required
+                />
               </div>
-              <button
-                className="m-button m-button--green m-button--fit-content"
-                type="submit"
-              >
-                Continuer
-              </button>
-              <p className={styles.forgot}>
-                <Link href={"/compte/mot-de-passe-oublie"}>
-                  Mot de passe oublié ?
-                </Link>
-              </p>
-              <p className={styles.register}>
-                Pas de compte ?{" "}
-                <Link href={"/compte/inscription"}>S'inscrire</Link>
-              </p>
-            </form>
-          </div>
+            </div>
+            <button
+              className="m-button m-button--green m-button--fit-content"
+              type="submit"
+            >
+              Continuer
+            </button>
+            <p className={styles.forgot}>
+              <Link href={"/compte/mot-de-passe-oublie"}>
+                Mot de passe oublié ?
+              </Link>
+            </p>
+            <p className={styles.register}>
+              Pas de compte ?{" "}
+              <Link href={"/compte/inscription"}>S'inscrire</Link>
+            </p>
+          </form>
         </div>
       </main>
     </Layout>

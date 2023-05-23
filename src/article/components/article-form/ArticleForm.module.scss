@@ -1,10 +1,17 @@
 .inputsRow {
     display: flex;
+    flex-wrap: wrap;
     margin: 0 -12px;
     margin-bottom: 18px;
+    .inputItem:not(:last-child) {
+        margin-bottom: 18px;
+    }
 }
 
 .inputItem {
-    width: 50%;
+    width: 100%;
     padding: 0 12px;
+    @media screen and (min-width: 768px) {
+        width: 50%;
+    }
 }

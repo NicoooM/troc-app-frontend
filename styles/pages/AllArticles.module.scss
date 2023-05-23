@@ -1,3 +1,16 @@
+.wrapper {
+    padding: 45px 0;
+    @media screen and (min-width: 768px) {
+        padding: 0;
+    }
+    :global(.m-grid) {
+        min-height: 0;
+        @media screen and (min-width: 1024px) {
+            min-height: 310px;
+        }
+    }
+}
+
 .title {
     font-size: 32px;
     font-weight: 700;
@@ -8,7 +21,8 @@
 .filters {
     margin-bottom: 36px;
     :global(.m-input) {
-        width: calc(100% / 3);
+        width: 100%;
+        max-width: 370px;
     }
 }
 
@@ -26,10 +40,16 @@
 }
 
 .selects {
-    display: flex;
-    align-items: center;
+    @media screen and (min-width: 768px) {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .select:first-child {
-    margin-right: 20px;
+    margin-bottom: 12px;
+    @media screen and (min-width: 768px) {
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
 }

@@ -3,16 +3,23 @@
 }
 
 .title {
-    font-size: 32px;
     font-weight: 700;
-    line-height: 40px;
-    margin-bottom: 30px;
+    font-size: 24px;
+    line-height: 26px;
+    margin-bottom: 12px;
+    @media screen and (min-width: 768px) {
+        line-height: 40px;
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
 }
 
 .head {
-    display: flex;
-    align-items: flex-start;
     margin: 0 -12px 60px -12px;
+    @media screen and (min-width: 768px) {
+        display: flex;
+        align-items: flex-start;
+    }
 }
 
 .profileInfos,
@@ -21,11 +28,19 @@
 }
 
 .profileInfos {
-    width: calc(100% / 3 * 2);
+    width: 100%;
+    margin-bottom: 12px;
+    @media screen and (min-width: 768px) {
+        margin-bottom: 0;
+        width: calc(100% / 3 * 2);
+    }
 }
 
 .profileSetting {
-    width: calc(100% / 3);
+    width: 100%;
+    @media screen and (min-width: 768px) {
+        width: calc(100% / 3);
+    }
 }
 
 .profileSettingItem:not(:last-child) {
@@ -33,20 +48,28 @@
 }
 
 .articlesHead {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-bottom: 36px;
+    @media screen and (min-width: 768px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 .articlesTitle {
-    font-size: 24px;
+    margin-bottom: 12px;
+    font-size: 20px;
+    line-height: 25px;
     font-weight: 700;
-    line-height: 30px;
+    @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 30px;
+    }
 }
 
 .search {
-    width: 370px;
+    width: 100%;
+    max-width: 370px;
 }
 
 .articlesCount {

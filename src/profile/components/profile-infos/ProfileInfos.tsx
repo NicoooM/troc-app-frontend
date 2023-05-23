@@ -9,10 +9,6 @@ type Props = {
 };
 
 const ProfileInfos = ({ user, itemsCount }: Props) => {
-  const renderProfilePicture = useMemo(() => {
-    return <User weight="fill" />;
-  }, []);
-
   const date = useMemo(() => {
     const date = new Date(user.createdAt);
     const result = date.toLocaleDateString("fr-FR", {
@@ -25,7 +21,9 @@ const ProfileInfos = ({ user, itemsCount }: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.profilePicture}>{renderProfilePicture}</div>
+      <div className={styles.profilePicture}>
+        <User weight="fill" />
+      </div>
       <div className={styles.content}>
         <h1 className={styles.username}>{user.username}</h1>
         <p className={styles.articles}>
