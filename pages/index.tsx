@@ -17,11 +17,7 @@ const Home = ({ latestItems }: Props) => {
       <Layout>
         <div className={styles.headWrapper}>
           <div className={styles.image}>
-            <Image
-              src="https://images.unsplash.com/photo-1677629828024-7793ff7d9403?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60"
-              fill
-              alt=""
-            />
+            <Image src="/images/home.jpg" fill alt="" />
           </div>
           <div className={styles.intro}>
             <h1 className={styles.introTitle}>

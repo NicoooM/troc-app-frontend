@@ -18,6 +18,24 @@ const ArticleSlider = ({ images }: Props) => {
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          infinite: false,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          infinite: false,
+          dots: false,
+        },
+      },
+    ],
   };
 
   const renderImages = () => {

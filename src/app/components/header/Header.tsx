@@ -2,10 +2,10 @@ import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout
 import LogoIcon from "@/src/app/icons/LogoIcon";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { clearUser } from "@/src/redux/slices/userSlice";
 import styles from "./Header.module.scss";
-import { ArrowsLeftRight, CaretDown, List, User, X } from "phosphor-react";
+import { CaretDown, Plus, User } from "phosphor-react";
 import Dropdown from "../dropdown/Dropdown";
 import { RootState } from "@/src/redux/store/store";
 import { removeAuthorization } from "@/src/utils/authorizations";
@@ -18,11 +18,6 @@ const Header = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.user);
-  const [burgerOpened, setBurgerOpened] = useState(false);
-
-  const toggleBurger = () => {
-    setBurgerOpened(!burgerOpened);
-  };
 
   const logout = () => {
     dispatch(clearUser());
@@ -41,7 +36,7 @@ const Header = () => {
           title="Echanger mon objet"
         >
           <p>Echanger mon objet</p>
-          <ArrowsLeftRight />
+          <Plus weight="bold" />
         </Link>
       );
     } else {
@@ -52,7 +47,7 @@ const Header = () => {
           title="Echanger mon objet"
         >
           <p>Echanger mon objet</p>
-          <ArrowsLeftRight />
+          <Plus weight="bold" />
         </Link>
       );
     }

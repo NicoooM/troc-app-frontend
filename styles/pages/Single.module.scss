@@ -1,20 +1,33 @@
 .wrapper {
-    padding-bottom: 90px;
+    padding: 45px 0;
+    @media screen and (min-width: 768px) {
+        padding: 0 0 90px 0;
+    }
 }
 
 .infoWrapper {
-    display: flex;
     margin: 0 -12px 30px -12px;
+    @media screen and (min-width: 768px) {
+        display: flex;
+    }
 }
 
 .slider {
+    width: 100%;
     padding: 0 12px;
-    width: 75%;
+    @media screen and (min-width: 768px) {
+        width: 75%;
+    }
 }
 
 .infos {
-    width: 25%;
+    margin-top: 30px;
+    width: 100%;
     padding: 0 12px;
+    @media screen and (min-width: 768px) {
+        margin-top: 0;
+        width: 25%;
+    }
 }
 
 .infosContent {
