@@ -1,4 +1,4 @@
-import { ImageType } from "@/src/types/image";
+import { ImageType } from "@/src/app/types/image";
 import Image from "next/image";
 import Slider from "react-slick";
 import SampleNextArrow from "../sample-next-arrow/SampleNextArrow";

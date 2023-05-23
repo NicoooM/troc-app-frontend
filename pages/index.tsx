@@ -3,8 +3,8 @@ import Layout from "@/src/app/components/layout/Layout";
 import styles from "@/styles/pages/Home.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { getAllItems } from "@/src/services/item.service";
-import { ArticleType } from "@/src/types/article";
+import { getAllItems } from "@/src/article/services/item.service";
+import { ArticleType } from "@/src/article/types/article";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 
 type Props = {

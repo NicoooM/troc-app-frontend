@@ -1,4 +1,4 @@
-import { resetPassword } from "@/src/services/auth.service";
+import { resetPassword } from "@/src/app/services/auth.service";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "@/src/app/components/layout/Layout";

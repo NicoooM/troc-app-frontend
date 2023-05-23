@@ -1,4 +1,4 @@
-import { UserType } from "@/src/types/user";
+import { UserType } from "@/src/app/types/user";
 import { User } from "phosphor-react";
 import { useMemo } from "react";
 import styles from "./ProfileInfos.module.scss";

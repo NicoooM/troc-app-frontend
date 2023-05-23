@@ -1,13 +1,13 @@
 import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout";
 import Layout from "@/src/app/components/layout/Layout";
-import { RootState } from "@/src/redux/store/store";
+import { RootState } from "@/src/app/redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "@/styles/pages/EditProfile.module.scss";
 import { useEffect, useState } from "react";
-import { UpdateUser } from "@/src/types/user";
-import { updateUser } from "@/src/services/user.service";
+import { UpdateUser } from "@/src/app/types/user";
+import { updateUser } from "@/src/app/services/user.service";
 import { useRouter } from "next/router";
-import { setUser } from "@/src/redux/slices/userSlice";
+import { setUser } from "@/src/app/redux/slices/userSlice";
 
 const EditProfile = () => {
   const router = useRouter();

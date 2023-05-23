@@ -1,6 +1,6 @@
-import useDebounce from "@/src/hooks/useDebounce";
-import { getAllItems } from "@/src/services/item.service";
-import { ArticleType } from "@/src/types/article";
+import useDebounce from "@/src/app/hooks/useDebounce";
+import { getAllItems } from "@/src/article/services/item.service";
+import { ArticleType } from "@/src/article/types/article";
 import Link from "next/link";
 import { MagnifyingGlass } from "phosphor-react";
 import { useEffect, useMemo, useRef, useState } from "react";

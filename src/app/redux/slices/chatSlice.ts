@@ -1,5 +1,5 @@
-import { RoomPreviewType } from "@/src/types/room";
-import { UserType } from "@/src/types/user";
+import { RoomPreviewType } from "@/src/chat/types/room";
+import { UserType } from "@/src/app/types/user";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 

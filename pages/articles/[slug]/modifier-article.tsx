@@ -1,8 +1,8 @@
 import ArticleForm from "@/src/article/components/article-form/ArticleForm";
 import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout";
 import styles from "@/styles/pages/CreateArticle.module.scss";
-import { getItem } from "@/src/services/item.service";
-import { ArticleType } from "@/src/types/article";
+import { getItem } from "@/src/article/services/item.service";
+import { ArticleType } from "@/src/article/types/article";
 import Layout from "@/src/app/components/layout/Layout";
 
 type Props = {

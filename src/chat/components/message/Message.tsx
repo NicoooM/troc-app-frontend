@@ -1,8 +1,8 @@
-import { MessageType } from "@/src/types/message";
+import { MessageType } from "@/src/chat/types/message";
 import styles from "./Message.module.scss";
 import { useSelector } from "react-redux";
-import { RootState } from "@/src/redux/store/store";
-import { readableDate } from "@/src/utils/formatDate";
+import { RootState } from "@/src/app/redux/store/store";
+import { readableDate } from "@/src/app/utils/formatDate";
 
 type Props = {
   message: MessageType;

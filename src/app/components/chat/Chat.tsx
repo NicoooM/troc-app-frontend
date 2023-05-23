@@ -1,19 +1,19 @@
 import { ArrowLeft, CaretDown, CaretUp } from "phosphor-react";
 import styles from "./Chat.module.scss";
 import { useEffect, useState } from "react";
-import { getAllRooms, getOneRoom } from "@/src/services/room.service";
-import { Room, RoomPreviewType } from "@/src/types/room";
+import { getAllRooms, getOneRoom } from "@/src/chat/services/room.service";
+import { Room, RoomPreviewType } from "@/src/chat/types/room";
 import RoomPreview from "@/src/chat/components/room-preview/RoomPreview";
 import RoomView from "@/src/chat/components/room-view/RoomView";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/src/redux/store/store";
-import { UserType } from "@/src/types/user";
-import socket from "@/src/utils/socket";
+import { RootState } from "@/src/app/redux/store/store";
+import { UserType } from "@/src/app/types/user";
+import socket from "@/src/app/utils/socket";
 import {
   setModal,
   setCurrentOtherUser,
   setRooms,
-} from "@/src/redux/slices/chatSlice";
+} from "@/src/app/redux/slices/chatSlice";
 
 const Chat = () => {
   const dispatch = useDispatch();

@@ -1,10 +1,10 @@
 import Layout from "@/src/app/components/layout/Layout";
 import ArticleSlider from "@/src/article/components/article-slider/ArticleSlider";
-import { getAllItems, getItem } from "@/src/services/item.service";
-import { ArticleType } from "@/src/types/article";
+import { getAllItems, getItem } from "@/src/article/services/item.service";
+import { ArticleType } from "@/src/article/types/article";
 import styles from "@/styles/pages/Single.module.scss";
 import { useMemo } from "react";
-import { readableDate } from "@/src/utils/formatDate";
+import { readableDate } from "@/src/app/utils/formatDate";
 import Link from "next/link";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
 import { User } from "phosphor-react";

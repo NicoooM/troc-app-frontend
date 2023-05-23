@@ -1,14 +1,14 @@
 import Layout from "@/src/app/components/layout/Layout";
 import ArticleCard from "@/src/article/components/article-card/ArticleCard";
-import { getAllItems } from "@/src/services/item.service";
-import { ArticleType } from "@/src/types/article";
+import { getAllItems } from "@/src/article/services/item.service";
+import { ArticleType } from "@/src/article/types/article";
 import Link from "next/link";
 import { CaretDown, MagnifyingGlass } from "phosphor-react";
 import { ChangeEvent, useEffect, useState } from "react";
 import styles from "@/styles/pages/AllArticles.module.scss";
-import useDebounce from "@/src/hooks/useDebounce";
-import { getAllCategories } from "@/src/services/category.service";
-import { Category } from "@/src/types/category";
+import useDebounce from "@/src/app/hooks/useDebounce";
+import { getAllCategories } from "@/src/app/services/category.service";
+import { Category } from "@/src/app/types/category";
 
 type Props = {
   defaultArticles: ArticleType[];

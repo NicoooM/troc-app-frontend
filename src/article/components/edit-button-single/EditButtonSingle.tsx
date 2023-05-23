@@ -1,5 +1,5 @@
 import styles from "./EditButtonSingle.module.scss";
-import { RootState } from "@/src/redux/store/store";
+import { RootState } from "@/src/app/redux/store/store";
 import Link from "next/link";
 import { Pencil } from "phosphor-react";
 import { useSelector } from "react-redux";

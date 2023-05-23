@@ -1,11 +1,11 @@
 import Dropdown from "@/src/app/components/dropdown/Dropdown";
-import { ArticleType } from "@/src/types/article";
+import { ArticleType } from "@/src/article/types/article";
 import Link from "next/link";
 import { DotsThreeVertical, PencilSimple, Trash } from "phosphor-react";
 import { useState } from "react";
 import styles from "./ArticleOptions.module.scss";
 import Modal from "@/src/app/components/modal/Modal";
-import { deleteItem } from "@/src/services/item.service";
+import { deleteItem } from "@/src/article/services/item.service";
 
 type Props = {
   article: ArticleType;

@@ -1,12 +1,12 @@
 import {
   getTokenFromCookie,
   removeAuthorization,
-} from "@/src/utils/authorizations";
+} from "@/src/app/utils/authorizations";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser, clearUser } from "@/src/redux/slices/userSlice";
+import { setUser, clearUser } from "@/src/app/redux/slices/userSlice";
 import { useEffect } from "react";
-import { getMe } from "@/src/services/user.service";
-import { RootState } from "@/src/redux/store/store";
+import { getMe } from "@/src/app/services/user.service";
+import { RootState } from "@/src/app/redux/store/store";
 import { useRouter } from "next/router";
 
 type Props = {

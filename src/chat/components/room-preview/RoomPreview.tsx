@@ -1,4 +1,4 @@
-import { RoomPreviewType } from "@/src/types/room";
+import { RoomPreviewType } from "@/src/chat/types/room";
 import styles from "./RoomPreview.module.scss";
 import { User } from "phosphor-react";
 

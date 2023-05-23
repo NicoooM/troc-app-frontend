@@ -1,4 +1,4 @@
-import { ArticleType } from "@/src/types/article";
+import { ArticleType } from "@/src/article/types/article";
 import Image from "next/image";
 import { Article } from "phosphor-react";
 import { useMemo } from "react";

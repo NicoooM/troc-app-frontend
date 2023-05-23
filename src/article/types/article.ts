@@ -1,5 +1,5 @@
-import { Category } from "./category";
-import { UserType } from "./user";
+import { Category } from "../../app/types/category";
+import { UserType } from "../../app/types/user";
 
 export type CreateArticle = {
   title: string;

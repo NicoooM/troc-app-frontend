@@ -1,8 +1,8 @@
-import { ArticleType } from "@/src/types/article";
+import { ArticleType } from "@/src/article/types/article";
 import Image from "next/image";
 import { useMemo } from "react";
 import styles from "./ArticleCard.module.scss";
-import { readableDate } from "@/src/utils/formatDate";
+import { readableDate } from "@/src/app/utils/formatDate";
 import { Article } from "phosphor-react";
 
 type Props = {

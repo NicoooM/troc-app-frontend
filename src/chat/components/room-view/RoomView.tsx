@@ -1,14 +1,14 @@
-import { Room } from "@/src/types/room";
+import { Room } from "@/src/chat/types/room";
 import styles from "./RoomView.module.scss";
 import { PaperPlaneTilt, User } from "phosphor-react";
 import Message from "../message/Message";
 import { useEffect, useRef, useState } from "react";
 import { Socket } from "socket.io-client";
-import { getOneRoom } from "@/src/services/room.service";
-import { UserType } from "@/src/types/user";
-import { RootState } from "@/src/redux/store/store";
+import { getOneRoom } from "@/src/chat/services/room.service";
+import { UserType } from "@/src/app/types/user";
+import { RootState } from "@/src/app/redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setNewChat } from "@/src/redux/slices/chatSlice";
+import { setNewChat } from "@/src/app/redux/slices/chatSlice";
 
 type Props = {
   currentOtherUser: UserType;

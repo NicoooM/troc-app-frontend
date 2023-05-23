@@ -9,7 +9,7 @@ import {
   getRequest,
   patchRequest,
   postRequest,
-} from "../utils/useApi";
+} from "../../app/utils/useApi";
 
 export const createItem = async (data: CreateArticle) => {
   const formData = new FormData();
