@@ -117,12 +117,14 @@ export async function getServerSideProps(context: any) {
     userId: userId,
     limit: LIMIT,
     exclude: article.id,
+    isAvailable: true,
   };
 
   const categoryArticlesQuery = {
     category: category,
     limit: LIMIT,
     exclude: article.id,
+    isAvailable: true,
   };
 
   const userArticles = await getAllItems(userArticlesQuery);

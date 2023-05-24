@@ -53,6 +53,7 @@ const MyAccount = () => {
     const query: any = {
       limit: LIMIT,
       userId: user.id,
+      isAvailable: true,
     };
     if (updateArticles) {
       getAllItems(query)
@@ -93,6 +94,7 @@ const MyAccount = () => {
         page,
         userId: user.id,
         search,
+        isAvailable: true,
       };
       getAllItems(query).then((data) => {
         setArticles([...articles, ...data.items]);

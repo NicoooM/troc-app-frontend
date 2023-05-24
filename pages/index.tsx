@@ -73,6 +73,7 @@ export async function getServerSideProps() {
 
   const latestPostsQuery = {
     limit: LIMIT,
+    isAvailable: true,
   };
 
   const latestItems = await getAllItems(latestPostsQuery);
