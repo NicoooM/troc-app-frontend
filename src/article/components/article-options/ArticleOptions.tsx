@@ -1,11 +1,11 @@
 import Dropdown from "@/src/app/components/dropdown/Dropdown";
 import { ArticleType } from "@/src/article/types/article";
 import Link from "next/link";
-import { DotsThreeVertical, PencilSimple, Trash } from "phosphor-react";
+import { Check, DotsThreeVertical, PencilSimple, Trash } from "phosphor-react";
 import { useState } from "react";
 import styles from "./ArticleOptions.module.scss";
 import Modal from "@/src/app/components/modal/Modal";
-import { deleteItem } from "@/src/article/services/item.service";
+import { deleteItem, updateItem } from "@/src/article/services/item.service";
 
 type Props = {
   article: ArticleType;
@@ -13,21 +13,41 @@ type Props = {
 };
 
 const ArticleOptions = ({ article, setUpdateArticles }: Props) => {
-  const [showPopup, setShowPopup] = useState(false);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
+  const [showValidatePopup, setShowValidatePopup] = useState(false);
 
-  const handlePopupOpen = () => {
-    setShowPopup(true);
+  const handleDeletePopupOpen = () => {
+    setShowDeletePopup(true);
   };
 
-  const handlePopupClose = () => {
-    setShowPopup(false);
+  const handleDeletePopupClose = () => {
+    setShowDeletePopup(false);
+  };
+
+  const handleValidatePopupOpen = () => {
+    setShowValidatePopup(true);
+  };
+
+  const handleValidatePopupClose = () => {
+    setShowValidatePopup(false);
   };
 
   const handleDeleteArticle = async () => {
     try {
       await deleteItem(article.id);
       window.scrollTo(0, 0);
-      setShowPopup(false);
+      handleDeletePopupClose();
+      setUpdateArticles(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleValidateArticle = async () => {
+    try {
+      await updateItem(article.id, { isAvailable: true });
+      window.scrollTo(0, 0);
+      handleValidatePopupClose();
       setUpdateArticles(true);
     } catch (error) {
       console.log(error);
@@ -42,6 +62,40 @@ const ArticleOptions = ({ article, setUpdateArticles }: Props) => {
       <div className={styles.options}>
         <ul>
           <li>
+            <button
+              className={styles.optionButton}
+              onClick={handleValidatePopupOpen}
+            >
+              <Check />
+              <p className={styles.optionName}>Échange validé</p>
+            </button>
+            {showValidatePopup && (
+              <Modal setIsOpen={setShowValidatePopup} title="Échange validé">
+                <div className={styles.popup}>
+                  <p className={styles.popupTitle}>
+                    Confirmer que l’offre “<b>{article.title}</b>” a bien été
+                    échangée ? Cela va enlever cette offre des résultats de
+                    recherches. Cette action est irréversible.
+                  </p>
+                  <div className={styles.buttons}>
+                    <button
+                      className="m-button m-button--fit-content m-button--grey"
+                      onClick={handleValidatePopupClose}
+                    >
+                      Annuler
+                    </button>
+                    <button
+                      className="m-button m-button--fit-content m-button--green"
+                      onClick={handleValidateArticle}
+                    >
+                      Valider
+                    </button>
+                  </div>
+                </div>
+              </Modal>
+            )}
+          </li>
+          <li>
             <Link
               className={styles.optionButton}
               href={`/articles/${article.slug}/modifier-article`}
@@ -51,12 +105,15 @@ const ArticleOptions = ({ article, setUpdateArticles }: Props) => {
             </Link>
           </li>
           <li>
-            <button className={styles.optionButton} onClick={handlePopupOpen}>
+            <button
+              className={styles.optionButton}
+              onClick={handleDeletePopupOpen}
+            >
               <Trash />
               <p className={styles.optionName}>Supprimer l'offre</p>
             </button>
-            {showPopup && (
-              <Modal setIsOpen={setShowPopup} title="Supprimer l’offre">
+            {showDeletePopup && (
+              <Modal setIsOpen={setShowDeletePopup} title="Supprimer l’offre">
                 <div className={styles.popup}>
                   <p className={styles.popupTitle}>
                     Voulez-vous vraiment supprimer l’offre “
@@ -65,7 +122,7 @@ const ArticleOptions = ({ article, setUpdateArticles }: Props) => {
                   <div className={styles.buttons}>
                     <button
                       className="m-button m-button--fit-content m-button--grey"
-                      onClick={handlePopupClose}
+                      onClick={handleDeletePopupClose}
                     >
                       Annuler
                     </button>

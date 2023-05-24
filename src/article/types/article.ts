@@ -28,6 +28,9 @@ export type AllArticles = {
   hasMore: boolean;
 };
 
-export type UpdateArticle = CreateArticle & {
-  filesToDelete: number[];
-};
+export type UpdateArticle = Partial<
+  CreateArticle & {
+    filesToDelete: number[];
+    isAvailable: boolean;
+  }
+>;

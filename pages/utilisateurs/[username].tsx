@@ -49,6 +49,7 @@ const SingleUser = ({ user, articlesData }: Props) => {
         limit: LIMIT,
         userId: user.id,
         search,
+        isAvailable: true,
       };
       getAllItems(query).then((data) => {
         setArticles(data.items);
@@ -66,6 +67,7 @@ const SingleUser = ({ user, articlesData }: Props) => {
         page,
         userId: user.id,
         search,
+        isAvailable: true,
       };
       getAllItems(query).then((data) => {
         setArticles([...articles, ...data.items]);
@@ -160,6 +162,7 @@ export async function getServerSideProps(ctx: any) {
   const query = {
     limit: LIMIT,
     userId,
+    isAvailable: true,
   };
 
   const articlesData = await getAllItems(query);

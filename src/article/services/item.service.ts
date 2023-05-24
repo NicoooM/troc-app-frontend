@@ -38,13 +38,16 @@ export const getItem = async (slug: string): Promise<ArticleType> => {
 
 export const updateItem = async (
   id: number,
-  data: UpdateArticle
+  data: Partial<UpdateArticle>
 ): Promise<ArticleType> => {
   const formData = new FormData();
-  formData.append("title", data.title);
-  formData.append("description", data.description);
-  formData.append("category", data.category.toString());
-  formData.append("againstCategory", data.againstCategory.toString());
+  data.title && formData.append("title", data.title);
+  data.description && formData.append("description", data.description);
+  data.category && formData.append("category", data.category.toString());
+  data.againstCategory &&
+    formData.append("againstCategory", data.againstCategory.toString());
+  data.isAvailable &&
+    formData.append("isAvailable", data.isAvailable.toString());
   if (data.files && data.files.length > 0) {
     data.files.forEach((file: any) => {
       formData.append("files", file);

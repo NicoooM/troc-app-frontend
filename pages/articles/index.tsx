@@ -30,6 +30,7 @@ const AllArticles = ({
     againstCategory: "",
     search: "",
     limit: 12,
+    isAvailable: true,
   };
   const [articles, setArticles] = useState<ArticleType[]>(defaultArticles);
   const [total, setTotal] = useState(defaultTotal);

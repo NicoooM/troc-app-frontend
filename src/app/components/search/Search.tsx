@@ -45,6 +45,7 @@ const Search = () => {
       const query = {
         search: debouncedSearch,
         limit: 5,
+        isAvailable: true,
       };
       getAllItems(query)
         .then((articles) => {
