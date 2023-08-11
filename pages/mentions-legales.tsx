@@ -1,5 +1,5 @@
 import Layout from "@/src/app/components/layout/Layout";
-import styles from "../styles/pages/Legal.module.scss";
+import styles from "@/src/styles/pages/Legal.module.scss";
 
 const Legal = () => {
   return (

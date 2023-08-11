@@ -1,6 +1,6 @@
 import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout";
 import Layout from "@/src/app/components/layout/Layout";
-import styles from "@/styles/pages/Home.module.scss";
+import styles from "@/src/styles/pages/Home.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllItems } from "@/src/article/services/item.service";

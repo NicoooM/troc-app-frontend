@@ -3,7 +3,7 @@ import { useState } from "react";
 import { RegisterUser } from "@/src/app/types/user";
 import { useRouter } from "next/navigation";
 import Layout from "@/src/app/components/layout/Layout";
-import styles from "@/styles/pages/Account.module.scss";
+import styles from "@/src/styles/pages/Account.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "react-toastify";

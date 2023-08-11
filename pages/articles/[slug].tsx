@@ -2,7 +2,7 @@ import Layout from "@/src/app/components/layout/Layout";
 import ArticleSlider from "@/src/article/components/article-slider/ArticleSlider";
 import { getAllItems, getItem } from "@/src/article/services/item.service";
 import { ArticleType } from "@/src/article/types/article";
-import styles from "@/styles/pages/Single.module.scss";
+import styles from "@/src/styles/pages/Single.module.scss";
 import { useMemo } from "react";
 import { readableDate } from "@/src/app/utils/formatDate";
 import Link from "next/link";

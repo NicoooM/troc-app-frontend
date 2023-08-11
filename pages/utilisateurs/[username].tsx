@@ -1,7 +1,7 @@
 import Layout from "@/src/app/components/layout/Layout";
 import ProfileInfos from "@/src/profile/components/profile-infos/ProfileInfos";
 import { MagnifyingGlass } from "phosphor-react";
-import styles from "@/styles/pages/Profile.module.scss";
+import styles from "@/src/styles/pages/Profile.module.scss";
 import { UserType } from "@/src/app/types/user";
 import { getUser } from "@/src/app/services/user.service";
 import { AllArticles, ArticleType } from "@/src/article/types/article";

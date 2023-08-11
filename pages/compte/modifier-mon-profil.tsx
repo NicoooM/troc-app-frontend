@@ -2,7 +2,7 @@ import ProfileLayout from "@/src/profile/components/profile-layout/ProfileLayout
 import Layout from "@/src/app/components/layout/Layout";
 import { RootState } from "@/src/app/redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "@/styles/pages/EditProfile.module.scss";
+import styles from "@/src/styles/pages/EditProfile.module.scss";
 import { useEffect, useState } from "react";
 import { UpdateUser } from "@/src/app/types/user";
 import { updateUser } from "@/src/app/services/user.service";

@@ -1,4 +1,5 @@
 .wrapper {
+    min-height: calc(100vh - 339px);
     padding: 60px 200px 120px 200px;
     :global(.m-button--green) {
         margin-top: 36px;

@@ -4,7 +4,7 @@ import { LoginUser } from "@/src/app/types/user";
 import { setTokenCookie } from "@/src/app/utils/authorizations";
 import { useRouter } from "next/navigation";
 import Layout from "@/src/app/components/layout/Layout";
-import styles from "@/styles/pages/Account.module.scss";
+import styles from "@/src/styles/pages/Account.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "react-toastify";

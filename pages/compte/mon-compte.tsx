@@ -3,7 +3,7 @@ import Layout from "@/src/app/components/layout/Layout";
 import ProfileInfos from "@/src/profile/components/profile-infos/ProfileInfos";
 import { RootState } from "@/src/app/redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "@/styles/pages/Profile.module.scss";
+import styles from "@/src/styles/pages/Profile.module.scss";
 import Link from "next/link";
 import { MagnifyingGlass, PencilSimple, Plus, SignOut } from "phosphor-react";
 import { removeAuthorization } from "@/src/app/utils/authorizations";
