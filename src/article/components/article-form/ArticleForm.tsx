@@ -177,7 +177,7 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
             className="m-button m-button--green m-button--fit-content"
             type="submit"
           >
-            Créer l’offre
+            {isEdit ? "Modifier l’offre" : "Créer l’offre"}
           </button>
         </>
       )}

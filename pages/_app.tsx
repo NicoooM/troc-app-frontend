@@ -1,4 +1,4 @@
-import "@/styles/main.scss";
+import "@/src/styles/main.scss";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { Plus_Jakarta_Sans } from "@next/font/google";

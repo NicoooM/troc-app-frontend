@@ -5,7 +5,7 @@ import { ArticleType } from "@/src/article/types/article";
 import Link from "next/link";
 import { CaretDown, MagnifyingGlass } from "phosphor-react";
 import { ChangeEvent, useEffect, useState } from "react";
-import styles from "@/styles/pages/AllArticles.module.scss";
+import styles from "@/src/styles/pages/AllArticles.module.scss";
 import useDebounce from "@/src/app/hooks/useDebounce";
 import { getAllCategories } from "@/src/app/services/category.service";
 import { Category } from "@/src/app/types/category";
@@ -190,6 +190,7 @@ export async function getServerSideProps(ctx: any) {
   const articlesQuery = {
     limit: LIMIT,
     category,
+    isAvailable: true,
   };
 
   const articles = await getAllItems(articlesQuery);
