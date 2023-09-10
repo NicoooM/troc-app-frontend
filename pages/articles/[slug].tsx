@@ -64,7 +64,9 @@ const SingleArticle = ({ article, userArticles, categoryArticles }: Props) => {
             </div>
           </div>
           <h2 className={styles.subtitle}>Détails de l'offre</h2>
-          <p className={styles.description}>{article.description}</p>
+          <p className={styles.description}>
+            {article.description || "Aucune description fournie"}
+          </p>
           {userArticles.length > 0 && (
             <div className={styles.others}>
               <h2 className={styles.subtitle}>
