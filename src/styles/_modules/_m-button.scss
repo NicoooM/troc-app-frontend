@@ -50,4 +50,11 @@
     &--fit-content {
         width: fit-content;
     }
+    &--loader {
+        margin-left: 8px;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
 }

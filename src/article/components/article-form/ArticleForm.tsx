@@ -13,6 +13,7 @@ import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import ArticleFiles from "../article-files/ArticleFiles";
 import styles from "./ArticleForm.module.scss";
+import Loader from "@/src/app/components/loader/Loader";
 
 type Props = {
   data?: ArticleType;
@@ -25,6 +26,7 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
   const [mounted, setMounted] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [filesToDelete, setFilesToDelete] = useState<number[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -59,6 +61,7 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     if (data) {
       try {
         const updateArticle: UpdateArticle = {
@@ -68,18 +71,22 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
         await updateItem(data.id, updateArticle);
         toast.success("Votre article a bien été modifié");
         router.push("/compte/mon-compte");
+        setLoading(false);
       } catch (error) {
         toast.error("Une erreur est survenue");
         console.error(error);
+        setLoading(false);
       }
     } else {
       try {
         await createItem(article);
         toast.success("Votre article a bien été créé");
         router.push("/compte/mon-compte");
+        setLoading(false);
       } catch (error) {
         toast.error("Une erreur est survenue");
         console.error(error);
+        setLoading(false);
       }
     }
   };
@@ -178,6 +185,11 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
             type="submit"
           >
             {isEdit ? "Modifier l’offre" : "Créer l’offre"}
+            {loading && (
+              <div className="m-button--loader">
+                <Loader />
+              </div>
+            )}
           </button>
         </>
       )}

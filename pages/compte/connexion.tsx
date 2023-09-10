@@ -28,6 +28,7 @@ export default function ConnexionPage() {
       setTokenCookie(access_token);
       router.push("/");
     } catch (error: any) {
+      toast.error("Vous n'avez pas pu être connecté");
       console.log(error);
     }
   };
