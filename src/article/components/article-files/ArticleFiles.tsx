@@ -86,7 +86,8 @@ const ArticleFiles = ({
             {renderDefaultFiles}
             {renderPreviewFiles}
           </ul>
-          {article.files?.length >= 0 && article.files?.length < 6 && (
+          {((article.files?.length >= 0 && article.files?.length < 6) ||
+            !article.files) && (
             <div>
               <input
                 type="file"
