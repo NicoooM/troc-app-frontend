@@ -42,7 +42,8 @@ export const updateItem = async (
 ): Promise<ArticleType> => {
   const formData = new FormData();
   data.title && formData.append("title", data.title);
-  data.description && formData.append("description", data.description);
+  (data.description || data.description === "") &&
+    formData.append("description", data.description);
   data.category && formData.append("category", data.category.toString());
   data.againstCategory &&
     formData.append("againstCategory", data.againstCategory.toString());

@@ -22,7 +22,9 @@ type Props = {
 
 const ArticleForm = ({ data, isEdit = false }: Props) => {
   const router = useRouter();
-  const [article, setArticle] = useState<CreateArticle>({} as CreateArticle);
+  const [article, setArticle] = useState<CreateArticle>({
+    description: "",
+  } as CreateArticle);
   const [mounted, setMounted] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [filesToDelete, setFilesToDelete] = useState<number[]>([]);
