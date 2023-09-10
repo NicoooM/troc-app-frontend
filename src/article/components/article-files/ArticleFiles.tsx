@@ -7,10 +7,10 @@ import styles from "./ArticleFiles.module.scss";
 
 type Props = {
   article: CreateArticle;
-  setArticle: (article: any) => void;
+  setArticle: (article: CreateArticle) => void;
   defaultFiles?: any[];
-  filesToDelete?: any[];
-  setFilesToDelete?: (filesToDelete: any[]) => void;
+  filesToDelete?: number[];
+  setFilesToDelete?: (filesToDelete: number[]) => void;
 };
 
 const ArticleFiles = ({
@@ -86,12 +86,19 @@ const ArticleFiles = ({
             {renderDefaultFiles}
             {renderPreviewFiles}
           </ul>
-          <div>
-            <input type="file" id="files" hidden onChange={handleChangeFile} />
-            <label className="m-file" htmlFor="files">
-              Ajouter une image
-            </label>
-          </div>
+          {article.files?.length >= 0 && article.files?.length < 6 && (
+            <div>
+              <input
+                type="file"
+                id="files"
+                hidden
+                onChange={handleChangeFile}
+              />
+              <label className="m-file" htmlFor="files">
+                Ajouter une image
+              </label>
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -10,6 +10,9 @@ const createHeaders = (token?: string, formData: boolean = false) => {
       Authorization: "Bearer " + token,
       Accept: "application/json",
       "Content-Type": contentType,
+      "Cache-Control": "no-cache",
+      Pragma: "no-cache",
+      Expires: "0",
     };
   } else {
     return {

@@ -20,26 +20,27 @@ const Chat = () => {
   const chat = useSelector((state: RootState) => state.chat);
   const { modalOpened, currentOtherUser, rooms } = chat;
 
+  const fetchRooms = async () => {
+    try {
+      const fetchedRooms = await getAllRooms();
+      dispatch(setRooms(fetchedRooms));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    getAllRooms()
-      .then((rooms) => {
-        dispatch(setRooms(rooms));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    fetchRooms();
   }, []);
 
   useEffect(() => {
-    socket.on("chat", (data: any) => {
-      getAllRooms()
-        .then((rooms) => {
-          dispatch(setRooms(rooms));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
+    const handleChatEvent = () => {
+      fetchRooms();
+    };
+    socket.on("chat", handleChatEvent);
+    return () => {
+      socket.off("chat", handleChatEvent);
+    };
   }, []);
 
   const handleModal = () => {

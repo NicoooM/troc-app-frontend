@@ -59,7 +59,7 @@ const ArticleForm = ({ data, isEdit = false }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isEdit && data) {
+    if (data) {
       try {
         const updateArticle: UpdateArticle = {
           ...article,
